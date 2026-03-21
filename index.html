@@ -4,175 +4,256 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Adrian Cuesta Duran</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* === RESETEO DE ESTILOS BÁSICOS === */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
+
+        /* Definimos variables para los colores principales */
+        :root {
+            --azul-noche: #1a2a4c;
+            --azul-acento: #4da6ff;
+            --gris-fondo: #f0f2f5;
+            --gris-texto: #333;
+            --gris-suave: #7f8c8d;
+            --blanco: #ffffff;
+        }
+
         body { 
             font-family: 'Open Sans', Arial, sans-serif; 
             line-height: 1.6; 
-            background-color: #f0f2f5;
-            color: #333;
+            background-color: var(--gris-fondo);
+            color: var(--gris-texto);
             padding: 20px;
+            overflow-x: hidden; /* Evita scroll horizontal por animaciones */
         }
         
-        /* === ESTILOS DE LOS BOTONES === */
+        /* === ESTILOS DE LOS BOTONES Y SWITCHER === */
         .language-switcher {
             text-align: center;
             margin-bottom: 30px;
+            animation: fadeIn 1s ease-out; /* Animación de entrada */
         }
         .btn-lang {                                                                                                
-            background-color: #1a2a4c;
-            color: #ffffff;
-            border: none;
+            background-color: var(--azul-noche);
+            color: var(--blanco);
+            border: 2px solid transparent;
             padding: 12px 24px;
             margin: 0 10px;
             font-size: 1em;
-            border-radius: 5px;
+            border-radius: 50px; /* Botones más redondeados y modernos */
             cursor: pointer;
-            transition: background-color 0.3s;
-            font-weight: bold;
+            transition: all 0.3s ease; /* Transición suave para todos los estados */
+            font-weight: 600;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .btn-lang:hover {
-            background-color: #2c457d;
-        }
-        .btn-lang.active {
-            background-color: #4da6ff;
-            color: #1a2a4c;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* === CONTENEDOR DEL CV === */
+        /* Efecto de brillo al pasar el mouse por los botones */
+        .btn-lang:hover {
+            background-color: #2c457d;
+            transform: translateY(-2px); /* Pequeño salto hacia arriba */
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-lang.active {
+            background-color: var(--azul-acento);
+            color: var(--azul-noche);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* === CONTENEDOR DEL CV CON ANIMACIÓN DE ENTRADA === */
         .cv-container {
             display: flex;
             max-width: 900px;
             margin: 0 auto;
-            background: #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            border-radius: 8px;
+            background: var(--blanco);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra más suave y difuminada */
+            border-radius: 12px; /* Bordes más redondeados */
             overflow: hidden;
+            animation: slideInUp 0.8s ease-out; /* Animación de entrada principal */
         }
         
         /* === COLUMNA IZQUIERDA (AZUL NOCHE) === */
         .left-column {
             width: 35%;
-            background-color: #1a2a4c; 
-            color: #ffffff;
-            padding: 40px 25px;
+            background-color: var(--azul-noche); 
+            color: var(--blanco);
+            padding: 40px 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            transition: all 0.3s ease;
         }
+
+        /* Estilos de la foto de perfil con animación hover */
         .profile-pic {
             width: 160px;
             height: 160px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #ffffff;
-            margin-bottom: 20px;
+            border: 5px solid var(--blanco);
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para el efecto hover */
         }
+
+        /* Efecto de zoom y sombra en la foto al pasar el mouse */
+        .profile-pic:hover {
+            transform: scale(1.05); /* Zoom ligero */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
         .contact-info {
             width: 100%;
             margin-bottom: 30px;
-            font-size: 0.9em;
+            font-size: 0.95em;
         }
         .contact-info p {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
             align-items: flex-start;
         }
         .contact-icon {
-            margin-right: 10px;
+            margin-right: 12px;
             font-size: 1.2em;
+            color: var(--azul-acento); /* Iconos del color de acento */
         }
+
+        /* Títulos de sección en la columna izquierda */
         .left-title {
             width: 100%;
-            font-size: 1.2em;
+            font-size: 1.25em;
             text-transform: uppercase;
-            border-bottom: 1px solid rgb(253, 252, 252);
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            margin-top: 10px;
-            letter-spacing: 1px;
-            color: #ffffff;
+            border-bottom: 2px solid var(--azul-acento); /* Línea inferior del color de acento */
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            margin-top: 15px;
+            letter-spacing: 1.5px;
+            color: var(--blanco);
+            font-weight: 700;
         }
         .left-list {
             width: 100%;
             list-style: none;
             padding: 0;
+            margin-bottom: 20px;
         }
         .left-list li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-size: 0.95em;
+            display: flex;
+            align-items: flex-start;
         }
+        /* Viñetas personalizadas y animadas */
         .left-list li::before {
-            content: "•";
-            color: #4da6ff; 
+            content: "✦"; /* Viñeta más moderna */
+            color: var(--azul-acento); 
             font-weight: bold;
             display: inline-block;
-            width: 1em;
-            margin-left: -1em;
+            width: 1.2em;
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+        }
+        /* Pequeña animación en la viñeta al pasar el mouse por el texto */
+        .left-list li:hover::before {
+            transform: rotate(90deg) scale(1.2);
         }
 
         /* === COLUMNA DERECHA (BLANCA) === */
         .right-column {
             width: 65%;
-            padding: 40px 35px;
-            background-color: #ffffff;
+            padding: 50px 40px;
+            background-color: var(--blanco);
+            transition: all 0.3s ease;
         }
+        
         h1 { 
-            color: #1a2a4c; 
-            font-size: 2.5em;
+            color: var(--azul-noche); 
+            font-size: 2.8em;
             line-height: 1.1;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             text-transform: uppercase;
+            font-weight: 700;
         }
         .job-title {
-            color: #7f8c8d;
-            font-size: 1.2em;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #1a2a4c;
+            color: var(--gris-suave);
+            font-size: 1.3em;
+            margin-bottom: 35px;
+            border-bottom: 3px solid var(--azul-noche);
             padding-bottom: 15px;
+            font-weight: 600;
         }
+
+        /* Títulos de sección en la columna derecha con animación al cargar */
         h2 { 
             color: #2c3e50; 
-            margin-top: 25px; 
-            margin-bottom: 10px;
+            margin-top: 30px; 
+            margin-bottom: 15px;
             border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-            font-size: 1.4em;
+            padding-bottom: 8px;
+            font-size: 1.6em;
+            font-weight: 700;
+            position: relative;
+            animation: slideInLeft 0.5s ease-out both; /* Animación desde la izquierda */
         }
+        /* Retrasos de animación para cada h2 para que aparezcan en cascada */
+        h2:nth-of-type(1) { animation-delay: 0.2s; }
+        h2:nth-of-type(2) { animation-delay: 0.4s; }
+        h2:nth-of-type(3) { animation-delay: 0.6s; }
+        h2:nth-of-type(4) { animation-delay: 0.8s; }
+        h2:nth-of-type(5) { animation-delay: 1.0s; }
+
         h3 { 
-            color: #1a2a4c; 
-            margin-bottom: 2px; 
-            font-size: 1.15em;
+            color: var(--azul-noche); 
+            margin-bottom: 3px; 
+            font-size: 1.2em;
+            font-weight: 600;
         }
         h4 {
             color: #555;
-            margin: 2px 0 8px;
-            font-weight: normal;
-            font-size: 0.95em;
+            margin: 2px 0 10px;
+            font-weight: 400;
+            font-size: 1em;
         }
         .right-column p { 
-            margin: 5px 0 10px; 
-            font-size: 0.95em;
+            margin: 5px 0 12px; 
+            font-size: 1em;
+            color: #555;
         }
         .right-column ul { 
-            margin-top: 5px; 
-            padding-left: 20px;
+            margin-top: 8px; 
+            margin-bottom: 15px;
+            padding-left: 25px;
         }
         .right-column li {
-            margin-bottom: 6px;
-            font-size: 0.95em;
+            margin-bottom: 8px;
+            font-size: 1em;
+            color: #555;
         }
         .date { 
             font-style: italic; 
-            color: #7f8c8d; 
-            font-size: 0.9em;
+            color: var(--gris-suave); 
+            font-size: 0.95em;
             float: right;
+            font-weight: 400;
         }
+
+        /* Contenedor para animar bloques enteros de experiencia/educación */
+        .animate-block {
+            animation: slideInUp 0.6s ease-out both;
+            margin-bottom: 25px;
+        }
+        /* Retrasos para la cascada de bloques */
+        .animate-block:nth-of-type(1) { animation-delay: 0.3s; }
+        .animate-block:nth-of-type(2) { animation-delay: 0.5s; }
+        .animate-block:nth-of-type(3) { animation-delay: 0.7s; }
+
         .header-group::after {
             content: "";
             display: table;
@@ -182,6 +263,129 @@
         /* Ocultar el CV en inglés por defecto */
         #cv-english {
             display: none;
+        }
+
+        /* === DEFINICIÓN DE ANIMACIONES CSS (KEYFRAMES) === */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* =================================================== */
+        /* === MEDIA QUERIES PARA DISEÑO RESPONSIVO (MÓVIL) === */
+        /* =================================================== */
+        
+        /* Se activa cuando la pantalla mide 768px o menos (tablets y celulares) */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px; /* Menos padding en el body para ganar espacio */
+            }
+
+            .language-switcher {
+                margin-bottom: 20px;
+            }
+            
+            .btn-lang {
+                padding: 10px 18px; /* Botones un poco más pequeños */
+                margin: 5px; /* Margen para cuando se apilen */
+                font-size: 0.9em;
+            }
+
+            .cv-container {
+                flex-direction: column; /* Cambiamos de fila a columna: se apilan */
+                border-radius: 8px; /* Bordes un poco menos redondeados */
+            }
+            
+            /* Ambas columnas pasan a medir el 100% del ancho */
+            .left-column, .right-column {
+                width: 100%;
+            }
+
+            .left-column {
+                padding: 30px 20px; /* Padding reducido */
+                border-bottom: 5px solid var(--azul-acento); /* Separador visual */
+            }
+
+            .profile-pic {
+                width: 130px; /* Foto más pequeña en móvil */
+                height: 130px;
+                margin-bottom: 20px;
+            }
+
+            .right-column {
+                padding: 30px 20px; /* Padding reducido */
+            }
+
+            h1 {
+                font-size: 2.2em; /* Título más pequeño */
+                text-align: center; /* Centrado en móvil */
+            }
+
+            .job-title {
+                font-size: 1.1em;
+                text-align: center; /* Centrado en móvil */
+                margin-bottom: 25px;
+            }
+
+            h2 {
+                font-size: 1.4em; /* Títulos de sección más pequeños */
+                text-align: center; /* Centrados en móvil */
+            }
+            
+            /* Estilo para que la línea inferior de los H2 se vea bien centrada */
+            h2::after {
+                content: '';
+                display: block;
+                width: 60px;
+                height: 2px;
+                background: #eee;
+                margin: 8px auto 0;
+                border: none;
+            }
+            h2 { border-bottom: none; } /* Quitamos la línea original */
+
+            /* Las fechas ya no flotan a la derecha, se ponen debajo del título */
+            .date {
+                float: none;
+                display: block;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                text-align: left;
+                font-size: 0.85em;
+            }
+
+            .right-column ul {
+                padding-left: 18px; /* Menos indentación en las listas */
+            }
+        }
+
+        /* Ajustes extra para celulares muy pequeños (max-width: 480px) */
+        @media (max-width: 480px) {
+            h1 { font-size: 1.9em; }
+            .left-title { font-size: 1.1em; }
+            .right-column p, .right-column li, .left-list li { font-size: 0.95em; }
         }
 
     </style>
@@ -195,7 +399,7 @@
 
     <div id="cv-spanish" class="cv-container">
         <div class="left-column">
-            <img src="https://i.postimg.cc/vmsSS7W0/me-000.png" alt="Foto de Adrian" class="profile-pic">
+            <img src="https://i.postimg.cc/vmsSS7W0/me-000.png" alt="Foto de Adrian Cuesta" class="profile-pic">
             
             <div class="contact-info">
                 <p><span class="contact-icon">📍</span> Av dos # 11 col buambilias<br>Hermosillo, Sonora<br>Mexico C.P 83140</p>
@@ -216,7 +420,7 @@
                 <li>Lectura y Cine</li>
                 <li>Videojuegos</li>
                 <li>Fórmula 1</li>
-                <li>Programación (proyectos personales para no perder la práctica)</li>
+                <li>Programación (proyectos personales)</li>
             </ul>
 
             <h2 class="left-title">Idiomas</h2>
@@ -230,6 +434,11 @@
             <h1>Adrian Cuesta Duran</h1>
             <div class="job-title">Desarrollador & Especialista en Automatización</div>
 
+            <h2>Resumen Profesional</h2>
+            <p style="text-align: justify; color: #555; margin-bottom: 25px;">
+                Desarrollador y estudiante de ingeniería enfocado en la automatización de procesos y el desarrollo de software. Con experiencia práctica en la creación de soluciones eficientes utilizando Python, VBA y tecnologías web, logrando optimizar flujos de trabajo logísticos en empresas como TE Connectivity. Apasionado por la resolución de problemas lógicos, el aprendizaje continuo en inteligencia artificial y la infraestructura de redes. Busco aportar mi capacidad analítica y adaptabilidad en un entorno tecnológico dinámico.
+            </p>
+
             <h2>Habilidades Técnicas</h2>
             <ul>
                 <li><strong>Automatización:</strong> Macros avanzadas en Excel, VBA.</li>
@@ -239,7 +448,7 @@
             </ul>
 
             <h2>Experiencia Profesional</h2>
-            <div style="margin-bottom: 20px;">
+            <div class="animate-block">
                 <div class="header-group">
                     <h3>TE Connectivity</h3>
                     <span class="date">Mayo 2025 – Abril 2026</span>
@@ -252,7 +461,7 @@
             </div>
 
             <h2>Proyectos y Servicio Social</h2>
-            <div style="margin-bottom: 20px;">
+            <div class="animate-block">
                 <ul>
                     <li><strong>Proyecto de Automatización QR:</strong> Desarrollo de un script utilizando Python y VBA para generar e incrustar códigos QR dinámicamente en hojas de cálculo de Excel.</li>
                     <li><strong>Instituto Tecnológico de Hermosillo (ITH):</strong> Soporte técnico en desarrollo web y gestión de documentación interna.</li>
@@ -260,7 +469,7 @@
             </div>
 
             <h2>Educación</h2>
-            <div style="margin-bottom: 15px;">
+            <div class="animate-block">
                 <div class="header-group">
                     <h3>Udemy</h3>
                     <span class="date">En Curso</span>
@@ -273,7 +482,7 @@
                 </ul>
             </div>
 
-            <div style="margin-bottom: 15px;">
+            <div class="animate-block">
                 <div class="header-group">
                     <h3>Colegio Muñoz</h3>
                     <span class="date">08/2018 – 07/2021 </span>
@@ -285,7 +494,7 @@
                 </ul>
             </div>
 
-            <div>
+            <div class="animate-block">
                 <div class="header-group">
                     <h3>Tecnológico Nacional de México Campus Hermosillo (ITH)</h3>
                     <span class="date">08/2022 - 07/2027</span>
@@ -300,13 +509,13 @@
                     <li>Participación en el InnovaTec</li>
                 </ul>
             </div>
-        </div>
+        </div>      
     </div>
 
 
     <div id="cv-english" class="cv-container">
         <div class="left-column">
-            <img src="https://i.postimg.cc/vmsSS7W0/me-000.png" alt="Adrian Profile Picture" class="profile-pic">
+            <img src="https://i.postimg.cc/vmsSS7W0/me-000.png" alt="Adrian Cuesta Profile Picture" class="profile-pic">
             
             <div class="contact-info">
                 <p><span class="contact-icon">📍</span> Av dos # 11 col buambilias<br>Hermosillo, Sonora<br>Mexico C.P 83140</p>
@@ -322,12 +531,12 @@
                 <li>Adaptability & Fast Learning</li>
             </ul>
 
-            <h2 class="left-title">Hobbies & Interests</h2>
+            <h2 class="left-title">Hobbies</h2>
             <ul class="left-list">
-                <li>Reading & Movies</li>
+                <li>Reading & Cinema</li>
                 <li>Video Games</li>
                 <li>Formula 1</li>
-                <li>Hobby Programming (to keep skills sharp)</li>
+                <li>Programming (personal projects)</li>
             </ul>
 
             <h2 class="left-title">Languages</h2>
@@ -341,6 +550,11 @@
             <h1>Adrian Cuesta Duran</h1>
             <div class="job-title">Developer & Automation Specialist</div>
 
+            <h2>Professional Summary</h2>
+            <p style="text-align: justify; color: #555; margin-bottom: 25px;">
+                Software developer and engineering student focused on process automation and software development. Possesses practical experience in creating efficient solutions using Python, VBA, and web technologies, successfully optimizing logistical workflows at companies like TE Connectivity. Passionate about logical problem-solving, continuous learning in artificial intelligence, and network infrastructure. Seeking to contribute my analytical capacity and adaptability in a dynamic technological environment.
+            </p>
+
             <h2>Technical Skills</h2>
             <ul>
                 <li><strong>Automation:</strong> Advanced Excel Macros, VBA.</li>
@@ -350,7 +564,7 @@
             </ul>
 
             <h2>Professional Experience</h2>
-            <div style="margin-bottom: 20px;">
+            <div class="animate-block">
                 <div class="header-group">
                     <h3>TE Connectivity</h3>
                     <span class="date">May 2025 – Apr 2026</span>
@@ -363,7 +577,7 @@
             </div>
 
             <h2>Projects & Social Service</h2>
-            <div style="margin-bottom: 20px;">
+            <div class="animate-block">
                 <ul>
                     <li><strong>QR Code Automation Project:</strong> Developed a script using Python and VBA to dynamically generate and embed QR codes directly into Excel spreadsheets.</li>
                     <li><strong>Instituto Tecnológico de Hermosillo (ITH):</strong> Technical support for web development and internal documentation management.</li>
@@ -371,7 +585,7 @@
             </div>
 
             <h2>Education</h2>
-            <div style="margin-bottom: 15px;">
+            <div class="animate-block">
                 <div class="header-group">
                     <h3>Udemy</h3>
                     <span class="date">In Progress</span>
@@ -384,10 +598,10 @@
                 </ul>
             </div>
 
-            <div style="margin-bottom: 15px;">
+            <div class="animate-block">
                 <div class="header-group">
                     <h3>Colegio Muñoz</h3>
-                    <span class="date">08/2018 – 07/2021</span>
+                    <span class="date">08/2020 – Present</span>
                 </div>
                 <h4>Programming Fundamentals</h4>
                 <ul>
@@ -396,7 +610,7 @@
                 </ul>
             </div>
 
-            <div>
+            <div class="animate-block">
                 <div class="header-group">
                     <h3>Tecnológico Nacional de México Campus Hermosillo (ITH)</h3>
                     <span class="date">08/2022 - 07/2027</span>
@@ -432,6 +646,19 @@
                 btnEn.classList.add('active');
                 btnEs.classList.remove('active');
             }
+            
+            // Reiniciar animaciones al cambiar de idioma
+            resetAnimations();
+        }
+
+        // Función para reiniciar las animaciones CSS al cambiar de idioma
+        function resetAnimations() {
+            const elements = document.querySelectorAll('h2, .animate-block');
+            elements.forEach(el => {
+                el.style.animation = 'none';
+                el.offsetHeight; // Truco para forzar el reflujo y reiniciar la animación
+                el.style.animation = null; 
+            });
         }
     </script>
 </body>
