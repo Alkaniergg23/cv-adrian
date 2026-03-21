@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Adrian Cuesta Duran</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
     <style>
-        /* === RESETEO DE ESTILOS BÁSICOS === */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        /* Definimos variables para los colores principales */
         :root {
             --azul-noche: #1a2a4c;
             --azul-acento: #4da6ff;
@@ -21,6 +22,7 @@
             --gris-texto: #333;
             --gris-suave: #7f8c8d;
             --blanco: #ffffff;
+            --verde-boton: #27ae60;
         }
 
         body { 
@@ -29,35 +31,45 @@
             background-color: var(--gris-fondo);
             color: var(--gris-texto);
             padding: 20px;
-            overflow-x: hidden; /* Evita scroll horizontal por animaciones */
+            overflow-x: hidden; 
         }
         
-        /* === ESTILOS DE LOS BOTONES Y SWITCHER === */
         .language-switcher {
             text-align: center;
             margin-bottom: 30px;
-            animation: fadeIn 1s ease-out; /* Animación de entrada */
+            animation: fadeIn 1s ease-out;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        .btn-lang {                                                                                                
+
+        .btn-lang, .btn-download {                                                                                                
             background-color: var(--azul-noche);
             color: var(--blanco);
             border: 2px solid transparent;
             padding: 12px 24px;
-            margin: 0 10px;
             font-size: 1em;
-            border-radius: 50px; /* Botones más redondeados y modernos */
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease; /* Transición suave para todos los estados */
+            transition: all 0.3s ease;
             font-weight: 600;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
         }
 
-        /* Efecto de brillo al pasar el mouse por los botones */
+        .btn-download {
+            background-color: var(--verde-boton);
+        }
+
         .btn-lang:hover {
             background-color: #2c457d;
-            transform: translateY(-2px); /* Pequeño salto hacia arriba */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-download:hover {
+            background-color: #219653;
+            transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
@@ -67,19 +79,17 @@
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        /* === CONTENEDOR DEL CV CON ANIMACIÓN DE ENTRADA === */
         .cv-container {
             display: flex;
             max-width: 900px;
             margin: 0 auto;
             background: var(--blanco);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra más suave y difuminada */
-            border-radius: 12px; /* Bordes más redondeados */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 12px;
             overflow: hidden;
-            animation: slideInUp 0.8s ease-out; /* Animación de entrada principal */
+            animation: slideInUp 0.8s ease-out;
         }
         
-        /* === COLUMNA IZQUIERDA (AZUL NOCHE) === */
         .left-column {
             width: 35%;
             background-color: var(--azul-noche); 
@@ -91,7 +101,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Estilos de la foto de perfil con animación hover */
         .profile-pic {
             width: 160px;
             height: 160px;
@@ -100,12 +109,11 @@
             border: 5px solid var(--blanco);
             margin-bottom: 25px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para el efecto hover */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Efecto de zoom y sombra en la foto al pasar el mouse */
         .profile-pic:hover {
-            transform: scale(1.05); /* Zoom ligero */
+            transform: scale(1.05);
             box-shadow: 0 8px 20px rgba(0,0,0,0.5);
         }
 
@@ -122,15 +130,14 @@
         .contact-icon {
             margin-right: 12px;
             font-size: 1.2em;
-            color: var(--azul-acento); /* Iconos del color de acento */
+            color: var(--azul-acento);
         }
 
-        /* Títulos de sección en la columna izquierda */
         .left-title {
             width: 100%;
             font-size: 1.25em;
             text-transform: uppercase;
-            border-bottom: 2px solid var(--azul-acento); /* Línea inferior del color de acento */
+            border-bottom: 2px solid var(--azul-acento);
             padding-bottom: 8px;
             margin-bottom: 18px;
             margin-top: 15px;
@@ -150,9 +157,8 @@
             display: flex;
             align-items: flex-start;
         }
-        /* Viñetas personalizadas y animadas */
         .left-list li::before {
-            content: "✦"; /* Viñeta más moderna */
+            content: "✦";
             color: var(--azul-acento); 
             font-weight: bold;
             display: inline-block;
@@ -160,12 +166,10 @@
             margin-right: 8px;
             transition: transform 0.3s ease;
         }
-        /* Pequeña animación en la viñeta al pasar el mouse por el texto */
         .left-list li:hover::before {
             transform: rotate(90deg) scale(1.2);
         }
 
-        /* === COLUMNA DERECHA (BLANCA) === */
         .right-column {
             width: 65%;
             padding: 50px 40px;
@@ -190,7 +194,6 @@
             font-weight: 600;
         }
 
-        /* Títulos de sección en la columna derecha con animación al cargar */
         h2 { 
             color: #2c3e50; 
             margin-top: 30px; 
@@ -200,9 +203,8 @@
             font-size: 1.6em;
             font-weight: 700;
             position: relative;
-            animation: slideInLeft 0.5s ease-out both; /* Animación desde la izquierda */
+            animation: slideInLeft 0.5s ease-out both; 
         }
-        /* Retrasos de animación para cada h2 para que aparezcan en cascada */
         h2:nth-of-type(1) { animation-delay: 0.2s; }
         h2:nth-of-type(2) { animation-delay: 0.4s; }
         h2:nth-of-type(3) { animation-delay: 0.6s; }
@@ -244,12 +246,10 @@
             font-weight: 400;
         }
 
-        /* Contenedor para animar bloques enteros de experiencia/educación */
         .animate-block {
             animation: slideInUp 0.6s ease-out both;
             margin-bottom: 25px;
         }
-        /* Retrasos para la cascada de bloques */
         .animate-block:nth-of-type(1) { animation-delay: 0.3s; }
         .animate-block:nth-of-type(2) { animation-delay: 0.5s; }
         .animate-block:nth-of-type(3) { animation-delay: 0.7s; }
@@ -260,134 +260,44 @@
             clear: both;
         }
 
-        /* Ocultar el CV en inglés por defecto */
         #cv-english {
             display: none;
         }
 
-        /* === DEFINICIÓN DE ANIMACIONES CSS (KEYFRAMES) === */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
         @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        /* =================================================== */
-        /* === MEDIA QUERIES PARA DISEÑO RESPONSIVO (MÓVIL) === */
-        /* =================================================== */
-        
-        /* Se activa cuando la pantalla mide 768px o menos (tablets y celulares) */
         @media (max-width: 768px) {
-            body {
-                padding: 10px; /* Menos padding en el body para ganar espacio */
-            }
-
-            .language-switcher {
-                margin-bottom: 20px;
-            }
-            
-            .btn-lang {
-                padding: 10px 18px; /* Botones un poco más pequeños */
-                margin: 5px; /* Margen para cuando se apilen */
-                font-size: 0.9em;
-            }
-
-            .cv-container {
-                flex-direction: column; /* Cambiamos de fila a columna: se apilan */
-                border-radius: 8px; /* Bordes un poco menos redondeados */
-            }
-            
-            /* Ambas columnas pasan a medir el 100% del ancho */
-            .left-column, .right-column {
-                width: 100%;
-            }
-
-            .left-column {
-                padding: 30px 20px; /* Padding reducido */
-                border-bottom: 5px solid var(--azul-acento); /* Separador visual */
-            }
-
-            .profile-pic {
-                width: 130px; /* Foto más pequeña en móvil */
-                height: 130px;
-                margin-bottom: 20px;
-            }
-
-            .right-column {
-                padding: 30px 20px; /* Padding reducido */
-            }
-
-            h1 {
-                font-size: 2.2em; /* Título más pequeño */
-                text-align: center; /* Centrado en móvil */
-            }
-
-            .job-title {
-                font-size: 1.1em;
-                text-align: center; /* Centrado en móvil */
-                margin-bottom: 25px;
-            }
-
-            h2 {
-                font-size: 1.4em; /* Títulos de sección más pequeños */
-                text-align: center; /* Centrados en móvil */
-            }
-            
-            /* Estilo para que la línea inferior de los H2 se vea bien centrada */
-            h2::after {
-                content: '';
-                display: block;
-                width: 60px;
-                height: 2px;
-                background: #eee;
-                margin: 8px auto 0;
-                border: none;
-            }
-            h2 { border-bottom: none; } /* Quitamos la línea original */
-
-            /* Las fechas ya no flotan a la derecha, se ponen debajo del título */
-            .date {
-                float: none;
-                display: block;
-                margin-top: 5px;
-                margin-bottom: 10px;
-                text-align: left;
-                font-size: 0.85em;
-            }
-
-            .right-column ul {
-                padding-left: 18px; /* Menos indentación en las listas */
-            }
+            body { padding: 10px; }
+            .language-switcher { margin-bottom: 20px; }
+            .btn-lang, .btn-download { padding: 10px 18px; margin: 5px; font-size: 0.9em; }
+            .cv-container { flex-direction: column; border-radius: 8px; }
+            .left-column, .right-column { width: 100%; }
+            .left-column { padding: 30px 20px; border-bottom: 5px solid var(--azul-acento); }
+            .profile-pic { width: 130px; height: 130px; margin-bottom: 20px; }
+            .right-column { padding: 30px 20px; }
+            h1 { font-size: 2.2em; text-align: center; }
+            .job-title { font-size: 1.1em; text-align: center; margin-bottom: 25px; }
+            h2 { font-size: 1.4em; text-align: center; border-bottom: none; }
+            h2::after { content: ''; display: block; width: 60px; height: 2px; background: #eee; margin: 8px auto 0; }
+            .date { float: none; display: block; margin-top: 5px; margin-bottom: 10px; text-align: left; font-size: 0.85em; }
+            .right-column ul { padding-left: 18px; }
         }
-
-        /* Ajustes extra para celulares muy pequeños (max-width: 480px) */
         @media (max-width: 480px) {
             h1 { font-size: 1.9em; }
             .left-title { font-size: 1.1em; }
             .right-column p, .right-column li, .left-list li { font-size: 0.95em; }
         }
-
     </style>
 </head>
 <body>
@@ -395,6 +305,7 @@
     <div class="language-switcher">
         <button id="btn-es" class="btn-lang active" onclick="switchLanguage('es')">CV Spanish</button>
         <button id="btn-en" class="btn-lang" onclick="switchLanguage('en')">CV English</button>
+        <button class="btn-download" onclick="descargarPDF()">⬇ Descargar PDF</button>
     </div>
 
     <div id="cv-spanish" class="cv-container">
@@ -531,7 +442,7 @@
                 <li>Adaptability & Fast Learning</li>
             </ul>
 
-            <h2 class="left-title">Hobbies</h2>
+            <h2 class="left-title">Hobbies & Interests</h2>
             <ul class="left-list">
                 <li>Reading & Cinema</li>
                 <li>Video Games</li>
@@ -646,18 +557,43 @@
                 btnEn.classList.add('active');
                 btnEs.classList.remove('active');
             }
-            
-            // Reiniciar animaciones al cambiar de idioma
             resetAnimations();
         }
 
-        // Función para reiniciar las animaciones CSS al cambiar de idioma
         function resetAnimations() {
             const elements = document.querySelectorAll('h2, .animate-block');
             elements.forEach(el => {
                 el.style.animation = 'none';
-                el.offsetHeight; // Truco para forzar el reflujo y reiniciar la animación
+                el.offsetHeight; 
                 el.style.animation = null; 
+            });
+        }
+
+        // Función para descargar el PDF
+        function descargarPDF() {
+            // Buscamos cuál de los dos currículums está visible
+            var cvEs = document.getElementById('cv-spanish');
+            var cvEn = document.getElementById('cv-english');
+            
+            var elementToPrint = (cvEs.style.display !== 'none') ? cvEs : cvEn;
+            var idioma = (cvEs.style.display !== 'none') ? 'ES' : 'EN';
+
+            // Configuración del PDF
+            var opt = {
+                margin:       0,
+                filename:     'CV_Adrian_Cuesta_' + idioma + '.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true }, // useCORS permite que la foto de internet cargue en el PDF
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // Quitamos las animaciones temporalmente para que el PDF no salga borroso
+            elementToPrint.style.animation = 'none';
+
+            // Generamos y guardamos el PDF
+            html2pdf().set(opt).from(elementToPrint).save().then(function() {
+                // Volvemos a activar las animaciones
+                elementToPrint.style.animation = '';
             });
         }
     </script>
