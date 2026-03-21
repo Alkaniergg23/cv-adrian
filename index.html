@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Adrian Cuesta Duran</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
+        /* === RESETEO DE ESTILOS BÁSICOS === */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -30,13 +30,14 @@
             background-color: var(--gris-fondo);
             color: var(--gris-texto);
             padding: 20px;
-            overflow-x: hidden;
+            overflow-x: hidden; 
         }
-
+        
+        /* === BOTONES === */
         .language-switcher {
             text-align: center;
             margin-bottom: 30px;
-            animation: fadeIn 1s ease-out;
+            animation: fadeIn 1s ease-out; 
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
@@ -49,9 +50,9 @@
             border: 2px solid transparent;
             padding: 12px 24px;
             font-size: 1em;
-            border-radius: 50px;
+            border-radius: 50px; 
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease; 
             font-weight: 600;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
@@ -60,17 +61,13 @@
             background-color: var(--verde-boton);
         }
 
-        .btn-lang:hover {
-            background-color: #2c457d;
-            transform: translateY(-2px);
+        .btn-lang:hover, .btn-download:hover {
+            transform: translateY(-2px); 
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
-        .btn-download:hover {
-            background-color: #219653;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
+        .btn-lang:hover { background-color: #2c457d; }
+        .btn-download:hover { background-color: #219653; }
 
         .btn-lang.active {
             background-color: var(--azul-acento);
@@ -78,17 +75,19 @@
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
         }
 
+        /* === CONTENEDOR === */
         .cv-container {
             display: flex;
             max-width: 900px;
             margin: 0 auto;
             background: var(--blanco);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
             border-radius: 12px;
             overflow: hidden;
-            animation: slideInUp 0.8s ease-out;
+            animation: slideInUp 0.8s ease-out; 
         }
-
+        
+        /* === COLUMNA IZQUIERDA === */
         .left-column {
             width: 35%;
             background-color: var(--azul-noche); 
@@ -97,7 +96,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: all 0.3s ease;
         }
 
         .profile-pic {
@@ -108,12 +106,11 @@
             border: 5px solid var(--blanco);
             margin-bottom: 25px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease; 
         }
 
         .profile-pic:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            transform: scale(1.05); 
         }
 
         .contact-info {
@@ -121,67 +118,57 @@
             margin-bottom: 30px;
             font-size: 0.95em;
         }
-
         .contact-info p {
             margin-bottom: 12px;
             display: flex;
             align-items: flex-start;
         }
-
         .contact-icon {
             margin-right: 12px;
             font-size: 1.2em;
-            color: var(--azul-acento);
+            color: var(--azul-acento); 
         }
 
         .left-title {
             width: 100%;
             font-size: 1.25em;
             text-transform: uppercase;
-            border-bottom: 2px solid #5d6d7e;
+            border-bottom: 2px solid #5d6d7e; 
             padding-bottom: 8px;
             margin-bottom: 18px;
             margin-top: 15px;
             letter-spacing: 1.5px;
-            color: var(--blanco);
+            color: var(--blanco); 
             font-weight: 700;
         }
-
         .left-list {
             width: 100%;
             list-style: none;
             padding: 0;
             margin-bottom: 20px;
         }
-
         .left-list li {
             margin-bottom: 10px;
             font-size: 0.95em;
             display: flex;
             align-items: flex-start;
         }
-
         .left-list li::before {
-            content: "✦";
-            color: var(--azul-acento);
+            content: "✦"; 
+            color: var(--azul-acento); 
             font-weight: bold;
             display: inline-block;
             width: 1.2em;
             margin-right: 8px;
-            transition: transform 0.3s ease;
         }
 
-        .left-list li:hover::before {
-            transform: rotate(90deg) scale(1.2);
-        }
-
+        /* === COLUMNA DERECHA === */
         .right-column {
             width: 65%;
             padding: 50px 40px;
             background-color: var(--blanco);
-            transition: all 0.3s ease;
         }
-
+        
         h1 { 
             color: var(--azul-noche); 
             font-size: 2.8em;
@@ -190,7 +177,6 @@
             text-transform: uppercase;
             font-weight: 700;
         }
-
         .job-title {
             color: var(--gris-suave);
             font-size: 1.3em;
@@ -208,10 +194,8 @@
             padding-bottom: 8px;
             font-size: 1.6em;
             font-weight: 700;
-            position: relative;
             animation: slideInLeft 0.5s ease-out both; 
         }
-
         h2:nth-of-type(1) { animation-delay: 0.2s; }
         h2:nth-of-type(2) { animation-delay: 0.4s; }
         h2:nth-of-type(3) { animation-delay: 0.6s; }
@@ -224,74 +208,51 @@
             font-size: 1.2em;
             font-weight: 600;
         }
-
         h4 {
             color: #555;
             margin: 2px 0 10px;
             font-weight: 400;
             font-size: 1em;
         }
-
         .right-column p { 
             margin: 5px 0 12px; 
             font-size: 1em;
             color: #555;
         }
-
         .right-column ul { 
             margin-top: 8px; 
             margin-bottom: 15px;
             padding-left: 25px;
         }
-
         .right-column li {
             margin-bottom: 8px;
             font-size: 1em;
             color: #555;
         }
-
         .date { 
             font-style: italic; 
             color: var(--gris-suave); 
             font-size: 0.95em;
             float: right;
-            font-weight: 400;
         }
 
         .animate-block {
             animation: slideInUp 0.6s ease-out both;
             margin-bottom: 25px;
         }
-
         .animate-block:nth-of-type(1) { animation-delay: 0.3s; }
         .animate-block:nth-of-type(2) { animation-delay: 0.5s; }
         .animate-block:nth-of-type(3) { animation-delay: 0.7s; }
 
-        .header-group::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
+        .header-group::after { content: ""; display: table; clear: both; }
+        #cv-english { display: none; }
 
-        #cv-english {
-            display: none;
-        }
+        /* ANIMACIONES */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
+        /* RESPONSIVO */
         @media (max-width: 768px) {
             body { padding: 10px; }
             .language-switcher { margin-bottom: 20px; }
@@ -306,13 +267,44 @@
             h2 { font-size: 1.4em; text-align: center; border-bottom: none; }
             h2::after { content: ''; display: block; width: 60px; height: 2px; background: #eee; margin: 8px auto 0; }
             .date { float: none; display: block; margin-top: 5px; margin-bottom: 10px; text-align: left; font-size: 0.85em; }
-            .right-column ul { padding-left: 18px; }
         }
 
-        @media (max-width: 480px) {
-            h1 { font-size: 1.9em; }
-            .left-title { font-size: 1.1em; }
-            .right-column p, .right-column li, .left-list li { font-size: 0.95em; }
+        /* ================================================================= */
+        /* CÓDIGO MÁGICO PARA QUE EL PDF SE IMPRIMA PERFECTO Y SIN CORTES    */
+        /* ================================================================= */
+        @media print {
+            /* Ocultamos los botones al imprimir */
+            .language-switcher { display: none !important; }
+            
+            /* Ajustamos el fondo y quitamos sombras y animaciones */
+            body { background-color: white !important; padding: 0 !important; margin: 0 !important; }
+            * { 
+                animation: none !important; 
+                transition: none !important; 
+                -webkit-print-color-adjust: exact !important; 
+                print-color-adjust: exact !important; 
+            }
+            
+            .cv-container {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            /* Forzamos los colores oscuros para que no se pongan blancos */
+            .left-column {
+                background-color: #1a2a4c !important;
+                padding: 30px 20px !important;
+            }
+            .right-column { padding: 30px !important; }
+
+            /* Evitamos que los bloques se corten a la mitad de la página */
+            .animate-block, h2, .contact-info {
+                page-break-inside: avoid !important;
+            }
+            h2 { page-break-after: avoid !important; }
         }
     </style>
 </head>
@@ -321,7 +313,7 @@
     <div class="language-switcher">
         <button id="btn-es" class="btn-lang active" onclick="switchLanguage('es')">CV Spanish</button>
         <button id="btn-en" class="btn-lang" onclick="switchLanguage('en')">CV English</button>
-        <button class="btn-download" onclick="descargarPDF()">⬇ Descargar PDF</button>
+        <button class="btn-download" onclick="window.print()">⬇ Descargar PDF</button>
     </div>
 
     <div id="cv-spanish" class="cv-container">
@@ -582,37 +574,6 @@
                 el.style.animation = 'none';
                 el.offsetHeight; 
                 el.style.animation = null; 
-            });
-        }
-
-        function descargarPDF() {
-            var cvEs = document.getElementById('cv-spanish');
-            var cvEn = document.getElementById('cv-english');
-            
-            var elementToPrint;
-            var idiomaNombre;
-
-            if (cvEs.style.display !== 'none') {
-                elementToPrint = cvEs;
-                idiomaNombre = 'ES';
-            } else {
-                elementToPrint = cvEn;
-                idiomaNombre = 'EN';
-            }
-
-            var opt = {
-                margin:       0,
-                filename:     'CV_Adrian_Cuesta_' + idiomaNombre + '.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, useCORS: true }, 
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-
-            const elementsToReset = document.querySelectorAll('h2, .animate-block');
-            elementsToReset.forEach(el => el.style.animation = 'none');
-
-            html2pdf().set(opt).from(elementToPrint).save().then(function() {
-                elementsToReset.forEach(el => el.style.animation = '');
             });
         }
     </script>
