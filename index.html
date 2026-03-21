@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Adrian Cuesta Duran</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
-        /* === RESETEO DE ESTILOS BÁSICOS === */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -33,7 +33,6 @@
             overflow-x: hidden; 
         }
         
-        /* === BOTONES === */
         .language-switcher {
             text-align: center;
             margin-bottom: 30px;
@@ -75,7 +74,6 @@
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        /* === CONTENEDOR === */
         .cv-container {
             display: flex;
             max-width: 900px;
@@ -87,7 +85,6 @@
             animation: slideInUp 0.8s ease-out; 
         }
         
-        /* === COLUMNA IZQUIERDA === */
         .left-column {
             width: 35%;
             background-color: var(--azul-noche); 
@@ -107,6 +104,7 @@
             margin-bottom: 25px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             transition: transform 0.3s ease; 
+            background-color: #ffffff;
         }
 
         .profile-pic:hover {
@@ -162,7 +160,6 @@
             margin-right: 8px;
         }
 
-        /* === COLUMNA DERECHA === */
         .right-column {
             width: 65%;
             padding: 50px 40px;
@@ -247,12 +244,10 @@
         .header-group::after { content: ""; display: table; clear: both; }
         #cv-english { display: none; }
 
-        /* ANIMACIONES */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideInLeft { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
 
-        /* RESPONSIVO */
         @media (max-width: 768px) {
             body { padding: 10px; }
             .language-switcher { margin-bottom: 20px; }
@@ -269,14 +264,8 @@
             .date { float: none; display: block; margin-top: 5px; margin-bottom: 10px; text-align: left; font-size: 0.85em; }
         }
 
-        /* ================================================================= */
-        /* CÓDIGO MÁGICO PARA QUE EL PDF SE IMPRIMA PERFECTO Y SIN CORTES    */
-        /* ================================================================= */
         @media print {
-            /* Ocultamos los botones al imprimir */
             .language-switcher { display: none !important; }
-            
-            /* Ajustamos el fondo y quitamos sombras y animaciones */
             body { background-color: white !important; padding: 0 !important; margin: 0 !important; }
             * { 
                 animation: none !important; 
@@ -284,26 +273,10 @@
                 -webkit-print-color-adjust: exact !important; 
                 print-color-adjust: exact !important; 
             }
-            
-            .cv-container {
-                box-shadow: none !important;
-                border-radius: 0 !important;
-                margin: 0 !important;
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-
-            /* Forzamos los colores oscuros para que no se pongan blancos */
-            .left-column {
-                background-color: #1a2a4c !important;
-                padding: 30px 20px !important;
-            }
+            .cv-container { box-shadow: none !important; border-radius: 0 !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
+            .left-column { background-color: #1a2a4c !important; padding: 30px 20px !important; }
             .right-column { padding: 30px !important; }
-
-            /* Evitamos que los bloques se corten a la mitad de la página */
-            .animate-block, h2, .contact-info {
-                page-break-inside: avoid !important;
-            }
+            .animate-block, h2, .contact-info { page-break-inside: avoid !important; }
             h2 { page-break-after: avoid !important; }
         }
     </style>
@@ -318,6 +291,7 @@
 
     <div id="cv-spanish" class="cv-container">
         <div class="left-column">
+            
             <img src="https://i.postimg.cc/vmsSS7W0/me-000.png" alt="Foto de Adrian Cuesta" class="profile-pic">
             
             <div class="contact-info">
@@ -433,6 +407,7 @@
 
     <div id="cv-english" class="cv-container">
         <div class="left-column">
+            
             <img src="https://i.postimg.cc/vmsSS7W0/me-000.png" alt="Adrian Cuesta Profile Picture" class="profile-pic">
             
             <div class="contact-info">
@@ -564,14 +539,6 @@
                 btnEn.classList.add('active');
                 btnEs.classList.remove('active');
             }
-            
-            // Reiniciar animaciones al cambiar de idioma
-            const elements = document.querySelectorAll('h2, .animate-block');
-            elements.forEach(el => {
-                el.style.animation = 'none';
-                el.offsetHeight; 
-                el.style.animation = null; 
-            });
         }
     </script>
 </body>
