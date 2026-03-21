@@ -5,18 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Adrian Cuesta Duran</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
-        /* === RESETEO DE ESTILOS BÁSICOS === */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        /* Definimos variables para los colores principales */
         :root {
             --azul-noche: #1a2a4c;
             --azul-acento: #4da6ff;
@@ -33,14 +30,13 @@
             background-color: var(--gris-fondo);
             color: var(--gris-texto);
             padding: 20px;
-            overflow-x: hidden; /* Evita scroll horizontal por animaciones */
+            overflow-x: hidden;
         }
-        
-        /* === ESTILOS DE LOS BOTONES Y SWITCHER === */
+
         .language-switcher {
             text-align: center;
             margin-bottom: 30px;
-            animation: fadeIn 1s ease-out; /* Animación de entrada */
+            animation: fadeIn 1s ease-out;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
@@ -53,9 +49,9 @@
             border: 2px solid transparent;
             padding: 12px 24px;
             font-size: 1em;
-            border-radius: 50px; /* Botones más redondeados y modernos */
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease; /* Transición suave para todos los estados */
+            transition: all 0.3s ease;
             font-weight: 600;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
@@ -64,10 +60,9 @@
             background-color: var(--verde-boton);
         }
 
-        /* Efecto de brillo al pasar el mouse por los botones */
         .btn-lang:hover {
             background-color: #2c457d;
-            transform: translateY(-2px); /* Pequeño salto hacia arriba */
+            transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
@@ -83,19 +78,17 @@
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        /* === CONTENEDOR DEL CV CON ANIMACIÓN DE ENTRADA === */
         .cv-container {
             display: flex;
             max-width: 900px;
             margin: 0 auto;
             background: var(--blanco);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra más suave y difuminada */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border-radius: 12px;
             overflow: hidden;
-            animation: slideInUp 0.8s ease-out; /* Animación de entrada principal */
+            animation: slideInUp 0.8s ease-out;
         }
-        
-        /* === COLUMNA IZQUIERDA (AZUL NOCHE) === */
+
         .left-column {
             width: 35%;
             background-color: var(--azul-noche); 
@@ -107,7 +100,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Estilos de la foto de perfil con animación hover */
         .profile-pic {
             width: 160px;
             height: 160px;
@@ -116,12 +108,11 @@
             border: 5px solid var(--blanco);
             margin-bottom: 25px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para el efecto hover */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Efecto de zoom y sombra en la foto al pasar el mouse */
         .profile-pic:hover {
-            transform: scale(1.05); /* Zoom ligero */
+            transform: scale(1.05);
             box-shadow: 0 8px 20px rgba(0,0,0,0.5);
         }
 
@@ -130,65 +121,67 @@
             margin-bottom: 30px;
             font-size: 0.95em;
         }
+
         .contact-info p {
             margin-bottom: 12px;
             display: flex;
             align-items: flex-start;
         }
+
         .contact-icon {
             margin-right: 12px;
             font-size: 1.2em;
-            color: var(--azul-acento); /* Iconos del color de acento */
+            color: var(--azul-acento);
         }
 
-        /* Títulos de sección en la columna izquierda - CORREGIDO COLOR */
         .left-title {
             width: 100%;
             font-size: 1.25em;
             text-transform: uppercase;
-            border-bottom: 2px solid #5d6d7e; /* Línea inferior gris azulada para contraste */
+            border-bottom: 2px solid #5d6d7e;
             padding-bottom: 8px;
             margin-bottom: 18px;
             margin-top: 15px;
             letter-spacing: 1.5px;
-            color: var(--blanco); /* <--- AHORA ES BLANCO PARA LEERSE BIEN */
+            color: var(--blanco);
             font-weight: 700;
         }
+
         .left-list {
             width: 100%;
             list-style: none;
             padding: 0;
             margin-bottom: 20px;
         }
+
         .left-list li {
             margin-bottom: 10px;
             font-size: 0.95em;
             display: flex;
             align-items: flex-start;
         }
-        /* Viñetas personalizadas y animadas */
+
         .left-list li::before {
-            content: "✦"; /* Viñeta más moderna */
-            color: var(--azul-acento); 
+            content: "✦";
+            color: var(--azul-acento);
             font-weight: bold;
             display: inline-block;
             width: 1.2em;
             margin-right: 8px;
             transition: transform 0.3s ease;
         }
-        /* Pequeña animación en la viñeta al pasar el mouse por el texto */
+
         .left-list li:hover::before {
             transform: rotate(90deg) scale(1.2);
         }
 
-        /* === COLUMNA DERECHA (BLANCA) === */
         .right-column {
             width: 65%;
             padding: 50px 40px;
             background-color: var(--blanco);
             transition: all 0.3s ease;
         }
-        
+
         h1 { 
             color: var(--azul-noche); 
             font-size: 2.8em;
@@ -197,6 +190,7 @@
             text-transform: uppercase;
             font-weight: 700;
         }
+
         .job-title {
             color: var(--gris-suave);
             font-size: 1.3em;
@@ -206,7 +200,6 @@
             font-weight: 600;
         }
 
-        /* Títulos de sección en la columna derecha con animación al cargar */
         h2 { 
             color: #2c3e50; 
             margin-top: 30px; 
@@ -216,9 +209,9 @@
             font-size: 1.6em;
             font-weight: 700;
             position: relative;
-            animation: slideInLeft 0.5s ease-out both; /* Animación desde la izquierda */
+            animation: slideInLeft 0.5s ease-out both; 
         }
-        /* Retrasos de animación para cada h2 para que aparezcan en cascada */
+
         h2:nth-of-type(1) { animation-delay: 0.2s; }
         h2:nth-of-type(2) { animation-delay: 0.4s; }
         h2:nth-of-type(3) { animation-delay: 0.6s; }
@@ -231,27 +224,32 @@
             font-size: 1.2em;
             font-weight: 600;
         }
+
         h4 {
             color: #555;
             margin: 2px 0 10px;
             font-weight: 400;
             font-size: 1em;
         }
+
         .right-column p { 
             margin: 5px 0 12px; 
             font-size: 1em;
             color: #555;
         }
+
         .right-column ul { 
             margin-top: 8px; 
             margin-bottom: 15px;
             padding-left: 25px;
         }
+
         .right-column li {
             margin-bottom: 8px;
             font-size: 1em;
             color: #555;
         }
+
         .date { 
             font-style: italic; 
             color: var(--gris-suave); 
@@ -260,12 +258,11 @@
             font-weight: 400;
         }
 
-        /* Contenedor para animar bloques enteros de experiencia/educación */
         .animate-block {
             animation: slideInUp 0.6s ease-out both;
             margin-bottom: 25px;
         }
-        /* Retrasos para la cascada de bloques */
+
         .animate-block:nth-of-type(1) { animation-delay: 0.3s; }
         .animate-block:nth-of-type(2) { animation-delay: 0.5s; }
         .animate-block:nth-of-type(3) { animation-delay: 0.7s; }
@@ -276,134 +273,47 @@
             clear: both;
         }
 
-        /* Ocultar el CV en inglés por defecto */
         #cv-english {
             display: none;
         }
 
-        /* === DEFINICIÓN DE ANIMACIONES CSS (KEYFRAMES) === */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
         @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        /* =================================================== */
-        /* === MEDIA QUERIES PARA DISEÑO RESPONSIVO (MÓVIL) === */
-        /* =================================================== */
-        
-        /* Se activa cuando la pantalla mide 768px o menos (tablets y celulares) */
         @media (max-width: 768px) {
-            body {
-                padding: 10px; /* Menos padding en el body para ganar espacio */
-            }
-
-            .language-switcher {
-                margin-bottom: 20px;
-            }
-            
-            .btn-lang, .btn-download {
-                padding: 10px 18px; /* Botones un poco más pequeños */
-                margin: 5px; /* Margen para cuando se apilen */
-                font-size: 0.9em;
-            }
-
-            .cv-container {
-                flex-direction: column; /* Cambiamos de fila a columna: se apilan */
-                border-radius: 8px; /* Bordes un poco menos redondeados */
-            }
-            
-            /* Ambas columnas pasan a medir el 100% del ancho */
-            .left-column, .right-column {
-                width: 100%;
-            }
-
-            .left-column {
-                padding: 30px 20px; /* Padding reducido */
-                border-bottom: 5px solid var(--azul-acento); /* Separador visual */
-            }
-
-            .profile-pic {
-                width: 130px; /* Foto más pequeña en móvil */
-                height: 130px;
-                margin-bottom: 20px;
-            }
-
-            .right-column {
-                padding: 30px 20px; /* Padding reducido */
-            }
-
-            h1 {
-                font-size: 2.2em; /* Título más pequeño */
-                text-align: center; /* Centrado en móvil */
-            }
-
-            .job-title {
-                font-size: 1.1em;
-                text-align: center; /* Centrado en móvil */
-                margin-bottom: 25px;
-            }
-
-            h2 {
-                font-size: 1.4em; /* Títulos de sección más pequeños */
-                text-align: center; /* Centrados en móvil */
-            }
-            
-            /* Estilo para que la línea inferior de los H2 se vea bien centrada */
-            h2::after {
-                content: '';
-                display: block;
-                width: 60px;
-                height: 2px;
-                background: #eee;
-                margin: 8px auto 0;
-                border: none;
-            }
-            h2 { border-bottom: none; } /* Quitamos la línea original */
-
-            /* Las fechas ya no flotan a la derecha, se ponen debajo del título */
-            .date {
-                float: none;
-                display: block;
-                margin-top: 5px;
-                margin-bottom: 10px;
-                text-align: left;
-                font-size: 0.85em;
-            }
-
-            .right-column ul {
-                padding-left: 18px; /* Menos indentación en las listas */
-            }
+            body { padding: 10px; }
+            .language-switcher { margin-bottom: 20px; }
+            .btn-lang, .btn-download { padding: 10px 18px; margin: 5px; font-size: 0.9em; }
+            .cv-container { flex-direction: column; border-radius: 8px; }
+            .left-column, .right-column { width: 100%; }
+            .left-column { padding: 30px 20px; border-bottom: 5px solid var(--azul-acento); }
+            .profile-pic { width: 130px; height: 130px; margin-bottom: 20px; }
+            .right-column { padding: 30px 20px; }
+            h1 { font-size: 2.2em; text-align: center; }
+            .job-title { font-size: 1.1em; text-align: center; margin-bottom: 25px; }
+            h2 { font-size: 1.4em; text-align: center; border-bottom: none; }
+            h2::after { content: ''; display: block; width: 60px; height: 2px; background: #eee; margin: 8px auto 0; }
+            .date { float: none; display: block; margin-top: 5px; margin-bottom: 10px; text-align: left; font-size: 0.85em; }
+            .right-column ul { padding-left: 18px; }
         }
 
-        /* Ajustes extra para celulares muy pequeños (max-width: 480px) */
         @media (max-width: 480px) {
             h1 { font-size: 1.9em; }
             .left-title { font-size: 1.1em; }
             .right-column p, .right-column li, .left-list li { font-size: 0.95em; }
         }
-
     </style>
 </head>
 <body>
@@ -416,7 +326,7 @@
 
     <div id="cv-spanish" class="cv-container">
         <div class="left-column">
-            <img src="https://i.postimg.cc/qqJrVV2B/me-000.png" alt="Foto de Adrian Cuesta" class="profile-pic">
+            <img src="me_000.jpg" alt="Foto de Adrian Cuesta" class="profile-pic">
             
             <div class="contact-info">
                 <p><span class="contact-icon">📍</span> Av dos # 11 col buambilias<br>Hermosillo, Sonora<br>Mexico C.P 83140</p>
@@ -437,7 +347,7 @@
                 <li>Lectura y Cine</li>
                 <li>Videojuegos</li>
                 <li>Fórmula 1</li>
-                <li>Programación (proyectos personales para no perder la práctica)</li>
+                <li>Programación (proyectos personales)</li>
             </ul>
 
             <h2 class="left-title">Idiomas</h2>
@@ -526,13 +436,12 @@
                     <li>Participación en el InnovaTec</li>
                 </ul>
             </div>
-        </div>      
+        </div>      
     </div>
-
 
     <div id="cv-english" class="cv-container">
         <div class="left-column">
-            <img src="https://i.postimg.cc/qqJrVV2B/me-000.png" alt="Adrian Cuesta Profile Picture" class="profile-pic">
+            <img src="me_000.jpg" alt="Adrian Cuesta Profile Picture" class="profile-pic">
             
             <div class="contact-info">
                 <p><span class="contact-icon">📍</span> Av dos # 11 col buambilias<br>Hermosillo, Sonora<br>Mexico C.P 83140</p>
@@ -664,23 +573,19 @@
                 btnEs.classList.remove('active');
             }
             
-            // Reiniciar animaciones al cambiar de idioma
             resetAnimations();
         }
 
-        // Función para reiniciar las animaciones CSS al cambiar de idioma
         function resetAnimations() {
             const elements = document.querySelectorAll('h2, .animate-block');
             elements.forEach(el => {
                 el.style.animation = 'none';
-                el.offsetHeight; // Truco para forzar el reflujo y reiniciar la animación
+                el.offsetHeight; 
                 el.style.animation = null; 
             });
         }
 
-        // Función profesional para descargar el PDF
         function descargarPDF() {
-            // Buscamos cuál de los dos currículums está visible actualmente
             var cvEs = document.getElementById('cv-spanish');
             var cvEn = document.getElementById('cv-english');
             
@@ -695,22 +600,18 @@
                 idiomaNombre = 'EN';
             }
 
-            // Configuración del PDF (Letter size, alta calidad)
             var opt = {
                 margin:       0,
                 filename:     'CV_Adrian_Cuesta_' + idiomaNombre + '.pdf',
                 image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, useCORS: true }, // CORs permite cargar la foto en el PDF
+                html2canvas:  { scale: 2, useCORS: true }, 
                 jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
             };
 
-            // Quitamos las animaciones temporalmente para que el PDF no salga borroso o cortado
             const elementsToReset = document.querySelectorAll('h2, .animate-block');
             elementsToReset.forEach(el => el.style.animation = 'none');
 
-            // Generamos y guardamos el PDF profesionalmente
             html2pdf().set(opt).from(elementToPrint).save().then(function() {
-                // Volvemos a activar las animaciones originales después de guardar
                 elementsToReset.forEach(el => el.style.animation = '');
             });
         }
