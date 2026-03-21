@@ -1,526 +1,168 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Adrian Cuesta Duran</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV - Adrian Cuesta Duran</title>
 
-    <style>
-        /* === RESETEO DE ESTILOS BÁSICOS === */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-        :root {
-            --azul-noche: #1a2a4c;
-            --azul-acento: #4da6ff;
-            --gris-fondo: #f0f2f5;
-            --gris-texto: #333;
-            --gris-suave: #7f8c8d;
-            --blanco: #ffffff;
-            --verde-boton: #27ae60;
-        }
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body { 
-            font-family: 'Open Sans', Arial, sans-serif; 
-            line-height: 1.6; 
-            background-color: var(--gris-fondo);
-            color: var(--gris-texto);
-            padding: 20px;
-        }
-        
-        /* === BOTONES === */
-        .language-switcher {
-            text-align: center;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+:root {
+    --azul-noche: #1a2a4c;
+    --azul-acento: #4da6ff;
+    --gris-fondo: #f0f2f5;
+    --gris-texto: #333;
+    --gris-suave: #7f8c8d;
+    --blanco: #ffffff;
+    --verde-boton: #27ae60;
+}
 
-        .btn-lang, .btn-download {                                                                                                
-            background-color: var(--azul-noche);
-            color: var(--blanco);
-            border: 2px solid transparent;
-            padding: 12px 24px;
-            font-size: 1em;
-            border-radius: 50px; 
-            cursor: pointer;
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    background-color: var(--gris-fondo);
+    padding: 20px;
+}
 
-        .btn-download {
-            background-color: var(--verde-boton);
-        }
+/* BOTONES */
+.language-switcher {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-        .btn-lang:hover { background-color: #2c457d; }
-        .btn-download:hover { background-color: #219653; }
+.btn-lang, .btn-download {
+    background-color: var(--azul-noche);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+}
 
-        .btn-lang.active {
-            background-color: var(--azul-acento);
-            color: var(--azul-noche);
-        }
+.btn-download { background-color: var(--verde-boton); }
 
-        /* === CONTENEDOR === */
-        .cv-container {
-            display: flex;
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--blanco);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        /* === COLUMNA IZQUIERDA === */
-        .left-column {
-            width: 35%;
-            background-color: var(--azul-noche); 
-            color: var(--blanco);
-            padding: 40px 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+/* CONTENEDOR */
+.cv-container {
+    display: flex;
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    page-break-inside: avoid;
+}
 
-        .profile-pic {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--blanco);
-            margin-bottom: 25px;
-            background-color: #ffffff;
-        }
+.left-column {
+    width: 35%;
+    background: var(--azul-noche);
+    color: white;
+    padding: 30px;
+}
 
-        .contact-info {
-            width: 100%;
-            margin-bottom: 30px;
-            font-size: 0.95em;
-        }
-        .contact-info p {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-        }
-        .contact-icon {
-            margin-right: 12px;
-            font-size: 1.2em;
-            color: var(--azul-acento); 
-        }
+.right-column {
+    width: 65%;
+    padding: 40px;
+}
 
-        .left-title {
-            width: 100%;
-            font-size: 1.25em;
-            text-transform: uppercase;
-            border-bottom: 2px solid #5d6d7e; 
-            padding-bottom: 8px;
-            margin-bottom: 18px;
-            margin-top: 15px;
-            letter-spacing: 1.5px;
-            color: var(--blanco); 
-            font-weight: 700;
-        }
-        .left-list {
-            width: 100%;
-            list-style: none;
-            padding: 0;
-            margin-bottom: 20px;
-        }
-        .left-list li {
-            margin-bottom: 10px;
-            font-size: 0.95em;
-            display: flex;
-            align-items: flex-start;
-        }
-        .left-list li::before {
-            content: "✦"; 
-            color: var(--azul-acento); 
-            font-weight: bold;
-            display: inline-block;
-            width: 1.2em;
-            margin-right: 8px;
-        }
+/* PRINT FIX */
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
 
-        /* === COLUMNA DERECHA === */
-        .right-column {
-            width: 65%;
-            padding: 50px 40px;
-            background-color: var(--blanco);
-        }
-        
-        h1 { 
-            color: var(--azul-noche); 
-            font-size: 2.8em;
-            line-height: 1.1;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-        .job-title {
-            color: var(--gris-suave);
-            font-size: 1.3em;
-            margin-bottom: 35px;
-            border-bottom: 3px solid var(--azul-noche);
-            padding-bottom: 15px;
-            font-weight: 600;
-        }
+    .language-switcher {
+        display: none;
+    }
 
-        h2 { 
-            color: #2c3e50; 
-            margin-top: 30px; 
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 8px;
-            font-size: 1.6em;
-            font-weight: 700;
-        }
+    .cv-container {
+        width: 100%;
+        max-width: 100%;
+        box-shadow: none;
+    }
+}
 
-        h3 { 
-            color: var(--azul-noche); 
-            margin-bottom: 3px; 
-            font-size: 1.2em;
-            font-weight: 600;
-        }
-        h4 {
-            color: #555;
-            margin: 2px 0 10px;
-            font-weight: 400;
-            font-size: 1em;
-        }
-        .right-column p { 
-            margin: 5px 0 12px; 
-            font-size: 1em;
-            color: #555;
-            text-align: justify;
-        }
-        .right-column ul { 
-            margin-top: 8px; 
-            margin-bottom: 15px;
-            padding-left: 25px;
-        }
-        .right-column li {
-            margin-bottom: 8px;
-            font-size: 1em;
-            color: #555;
-        }
-        .date { 
-            font-style: italic; 
-            color: var(--gris-suave); 
-            font-size: 0.95em;
-            float: right;
-        }
-
-        .header-group::after { content: ""; display: table; clear: both; }
-        
-        /* Ocultar inglés por defecto */
-        #cv-english { display: none; }
-
-        /* === RESPONSIVO SOLO PARA PANTALLAS DE CELULAR === */
-        @media screen and (max-width: 768px) {
-            body { padding: 10px; }
-            .language-switcher { margin-bottom: 20px; }
-            .btn-lang, .btn-download { padding: 10px 18px; margin: 5px; font-size: 0.9em; }
-            .cv-container { flex-direction: column; }
-            .left-column, .right-column { width: 100%; }
-            .left-column { padding: 30px 20px; border-bottom: 5px solid var(--azul-acento); }
-            .profile-pic { width: 130px; height: 130px; margin-bottom: 20px; }
-            .right-column { padding: 30px 20px; }
-            h1 { font-size: 2.2em; text-align: center; }
-            .job-title { font-size: 1.1em; text-align: center; margin-bottom: 25px; }
-            h2 { text-align: center; border-bottom: none; }
-            h2::after { content: ''; display: block; width: 60px; height: 2px; background: #eee; margin: 8px auto 0; }
-            .date { float: none; display: block; margin-top: 5px; margin-bottom: 10px; text-align: left; font-size: 0.85em; }
-        }
-    </style>
+</style>
 </head>
+
 <body>
 
-    <div class="language-switcher">
-        <button id="btn-es" class="btn-lang active" onclick="switchLanguage('es')">CV Spanish</button>
-        <button id="btn-en" class="btn-lang" onclick="switchLanguage('en')">CV English</button>
-        <button class="btn-download" onclick="descargarPDF()">⬇ Descargar PDF</button>
+<div class="language-switcher">
+    <button onclick="switchLanguage('es')">Spanish</button>
+    <button onclick="switchLanguage('en')">English</button>
+    <button class="btn-download" onclick="descargarPDF()">⬇ Descargar PDF</button>
+</div>
+
+<!-- CV ESPAÑOL -->
+<div id="cv-spanish" class="cv-container">
+    <div class="left-column">
+        <h2>Contacto</h2>
+        <p>📞 6624733049</p>
+        <p>✉️ adriancuesta58@gmail.com</p>
     </div>
 
-    <div id="cv-spanish" class="cv-container">
-        <div class="left-column">
-            
-            <img src="https://i.postimg.cc/vmsSS7W0/me-000.png" alt="Foto de Adrian Cuesta" class="profile-pic">
-            
-            <div class="contact-info">
-                <p><span class="contact-icon">📍</span> Av dos # 11 col buambilias<br>Hermosillo, Sonora<br>Mexico C.P 83140</p>
-                <p><span class="contact-icon">📞</span> +52 6624733049</p>
-                <p><span class="contact-icon">✉️</span> adriancuesta58@gmail.com</p>
-            </div>
+    <div class="right-column">
+        <h1>Adrian Cuesta Duran</h1>
+        <p>Desarrollador & Automatización</p>
+    </div>
+</div>
 
-            <h2 class="left-title">Habilidades Clave</h2>
-            <ul class="left-list">
-                <li>Optimización de Funcionalidad</li>
-                <li>Resolución de Problemas Matemáticos</li>
-                <li>Trabajo Colaborativo</li>
-                <li>Adaptabilidad y Aprendizaje Rápido</li>
-            </ul>
-
-            <h2 class="left-title">Pasatiempos</h2>
-            <ul class="left-list">
-                <li>Lectura y Cine</li>
-                <li>Videojuegos</li>
-                <li>Fórmula 1</li>
-                <li>Programación (proyectos personales)</li>
-            </ul>
-
-            <h2 class="left-title">Idiomas</h2>
-            <ul class="left-list">
-                <li>Español (Nativo)</li>
-                <li>Inglés (Nivel B2)</li>
-            </ul>
-        </div>
-
-        <div class="right-column">
-            <h1>Adrian Cuesta Duran</h1>
-            <div class="job-title">Desarrollador & Especialista en Automatización</div>
-
-            <h2>Resumen Profesional</h2>
-            <p>
-                Desarrollador y estudiante de ingeniería enfocado en la automatización de procesos y el desarrollo de software. Con experiencia práctica en la creación de soluciones eficientes utilizando Python, VBA y tecnologías web, logrando optimizar flujos de trabajo logísticos en empresas como TE Connectivity. Apasionado por la resolución de problemas lógicos, el aprendizaje continuo en inteligencia artificial y la infraestructura de redes. Busco aportar mi capacidad analítica y adaptabilidad en un entorno tecnológico dinámico.
-            </p>
-
-            <h2>Habilidades Técnicas</h2>
-            <ul>
-                <li><strong>Automatización:</strong> Macros avanzadas en Excel, VBA.</li>
-                <li><strong>Programación:</strong> Python, C++, SQL, JavaScript, HTML, CSS, Haskell.</li>
-                <li><strong>Redes y TI:</strong> Fundamentos de redes, enrutamiento y conmutación (Preparación para CCNA).</li>
-                <li><strong>Inteligencia Artificial:</strong> Fundamentos de IA con Python.</li>
-            </ul>
-
-            <h2>Experiencia Profesional</h2>
-            <div style="margin-bottom: 25px;">
-                <div class="header-group">
-                    <h3>TE Connectivity</h3>
-                    <span class="date">Mayo 2025 – Abril 2026</span>
-                </div>
-                <h4>Automatización y Optimización - Global Logistics</h4>
-                <ul>
-                    <li><strong>Automatización de Procesos:</strong> Desarrollo e implementación de macros avanzadas en Excel para la facturación integral de Aduanas de Exportación y Transporte, logrando reducir tiempos de procesamiento y minimizando errores manuales.</li>
-                    <li><strong>Desarrollo Web:</strong> Diseño y creación de un portal web interno enfocado en mejorar la eficiencia operativa y el flujo de información logística dentro de la compañía.</li>
-                </ul>
-            </div>
-
-            <h2>Proyectos y Servicio Social</h2>
-            <div style="margin-bottom: 25px;">
-                <ul>
-                    <li><strong>Proyecto de Automatización QR:</strong> Desarrollo de un script utilizando Python y VBA para generar e incrustar códigos QR dinámicamente en hojas de cálculo de Excel.</li>
-                    <li><strong>Instituto Tecnológico de Hermosillo (ITH):</strong> Soporte técnico en desarrollo web y gestión de documentación interna.</li>
-                </ul>
-            </div>
-
-            <h2>Educación</h2>
-            <div style="margin-bottom: 25px;">
-                <div class="header-group">
-                    <h3>Udemy</h3>
-                    <span class="date">En Curso</span>
-                </div>
-                <h4>Cursos de Certificación</h4>
-                <ul>
-                    <li>Curso Full Stack (JavaScript, React, Node)</li>
-                    <li>Bases de Datos SQL</li>
-                    <li>Python para Ciencia de Datos e IA</li>
-                </ul>
-            </div>
-
-            <div style="margin-bottom: 25px;">
-                <div class="header-group">
-                    <h3>Colegio Muñoz</h3>
-                    <span class="date">08/2018 – 07/2021 </span>
-                </div>
-                <h4>Fundamentos de Programación</h4>
-                <ul>
-                    <li>Introducción teórica y práctica al desarrollo de software y lógica computacional mediante el lenguaje C++.</li>
-                    <li>Consolidación de conocimientos a través de aprendizaje autodidacta y mentoría docente para la resolución de problemas lógicos complejos.</li>
-                </ul>
-            </div>
-
-            <div style="margin-bottom: 25px;">
-                <div class="header-group">
-                    <h3>Tecnológico Nacional de México Campus Hermosillo (ITH)</h3>
-                    <span class="date">08/2022 - 07/2027</span>
-                </div>
-                <ul>
-                    <li>Reforzamiento de los Fundamentos de la Programación</li>
-                    <li>Conocimiento de Programación Orientada a Objetos</li>
-                    <li>Conocimiento de Tópicos de Programación</li>
-                    <li>Programación de Redes</li>
-                    <li>Estructura de Datos</li>
-                    <li>Base de Datos</li>
-                    <li>Participación en el InnovaTec</li>
-                </ul>
-            </div>
-        </div>      
+<!-- CV INGLES -->
+<div id="cv-english" class="cv-container" style="display:none;">
+    <div class="left-column">
+        <h2>Contact</h2>
+        <p>📞 6624733049</p>
+        <p>✉️ adriancuesta58@gmail.com</p>
     </div>
 
-    <div id="cv-english" class="cv-container">
-        <div class="left-column">
-            
-            <img src="https://i.postimg.cc/vmsSS7W0/me-000.png" alt="Adrian Cuesta Profile Picture" class="profile-pic">
-            
-            <div class="contact-info">
-                <p><span class="contact-icon">📍</span> Av dos # 11 col buambilias<br>Hermosillo, Sonora<br>Mexico C.P 83140</p>
-                <p><span class="contact-icon">📞</span> +52 6624733049 </p>
-                <p><span class="contact-icon">✉️</span> adriancuesta58@gmail.com</p>
-            </div>
-
-            <h2 class="left-title">Core Competencies</h2>
-            <ul class="left-list">
-                <li>Functional Optimization</li>
-                <li>Problem Solving & Applied Math</li>
-                <li>Collaborative Teamwork</li>
-                <li>Adaptability & Fast Learning</li>
-            </ul>
-
-            <h2 class="left-title">Hobbies & Interests</h2>
-            <ul class="left-list">
-                <li>Reading & Cinema</li>
-                <li>Video Games</li>
-                <li>Formula 1</li>
-                <li>Programming (personal projects)</li>
-            </ul>
-
-            <h2 class="left-title">Languages</h2>
-            <ul class="left-list">
-                <li>Spanish (Native)</li>
-                <li>English (B2 Level)</li>
-            </ul>
-        </div>
-
-        <div class="right-column">
-            <h1>Adrian Cuesta Duran</h1>
-            <div class="job-title">Developer & Automation Specialist</div>
-
-            <h2>Professional Summary</h2>
-            <p>
-                Software developer and engineering student focused on process automation and software development. Possesses practical experience in creating efficient solutions using Python, VBA, and web technologies, successfully optimizing logistical workflows at companies like TE Connectivity. Passionate about logical problem-solving, continuous learning in artificial intelligence, and network infrastructure. Seeking to contribute my analytical capacity and adaptability in a dynamic technological environment.
-            </p>
-
-            <h2>Technical Skills</h2>
-            <ul>
-                <li><strong>Automation:</strong> Advanced Excel Macros, VBA.</li>
-                <li><strong>Programming:</strong> Python, C++, SQL, JavaScript, HTML, CSS, Haskell.</li>
-                <li><strong>IT & Networking:</strong> Network fundamentals, routing and switching (CCNA Preparation).</li>
-                <li><strong>Artificial Intelligence:</strong> AI Fundamentals with Python.</li>
-            </ul>
-
-            <h2>Professional Experience</h2>
-            <div style="margin-bottom: 25px;">
-                <div class="header-group">
-                    <h3>TE Connectivity</h3>
-                    <span class="date">May 2025 – Apr 2026</span>
-                </div>
-                <h4>Automation and Optimization - Global Logistics</h4>
-                <ul>
-                    <li><strong>Process Automation:</strong> Developed and implemented advanced Excel macros for comprehensive billing in Export Customs and Transportation, significantly reducing processing times and minimizing manual errors.</li>
-                    <li><strong>Web Development:</strong> Designed and created an internal web portal focused on improving operational efficiency and logistical information flow within the company.</li>
-                </ul>
-            </div>
-
-            <h2>Projects & Social Service</h2>
-            <div style="margin-bottom: 25px;">
-                <ul>
-                    <li><strong>QR Code Automation Project:</strong> Developed a script using Python and VBA to dynamically generate and embed QR codes directly into Excel spreadsheets.</li>
-                    <li><strong>Instituto Tecnológico de Hermosillo (ITH):</strong> Technical support for web development and internal documentation management.</li>
-                </ul>
-            </div>
-
-            <h2>Education</h2>
-            <div style="margin-bottom: 25px;">
-                <div class="header-group">
-                    <h3>Udemy</h3>
-                    <span class="date">In Progress</span>
-                </div>
-                <h4>Certification Courses</h4>
-                <ul>
-                    <li>Full Stack Web Development (JavaScript, React, Node)</li>
-                    <li>SQL Databases & Data Management</li>
-                    <li>Python for Data Science & AI</li>
-                </ul>
-            </div>
-
-            <div style="margin-bottom: 25px;">
-                <div class="header-group">
-                    <h3>Colegio Muñoz</h3>
-                    <span class="date">08/2020 – Present</span>
-                </div>
-                <h4>Programming Fundamentals</h4>
-                <ul>
-                    <li>Theoretical and practical introduction to software development and computational logic using C++.</li>
-                    <li>Consolidation of knowledge through self-directed learning and mentoring to resolve complex logical problems.</li>
-                </ul>
-            </div>
-
-            <div style="margin-bottom: 25px;">
-                <div class="header-group">
-                    <h3>Tecnológico Nacional de México Campus Hermosillo (ITH)</h3>
-                    <span class="date">08/2022 - 07/2027</span>
-                </div>
-                <ul>
-                    <li>Reinforcement of Programming Fundamentals</li>
-                    <li>Object-Oriented Programming Knowledge</li>
-                    <li>Advanced Programming Topics Knowledge</li>
-                    <li>Network Programming</li>
-                    <li>Data Structures</li>
-                    <li>Databases</li>
-                    <li>Participation in InnovaTec</li>
-                </ul>
-            </div>
-        </div>
+    <div class="right-column">
+        <h1>Adrian Cuesta Duran</h1>
+        <p>Developer & Automation Specialist</p>
     </div>
+</div>
 
-    <script>
-        function switchLanguage(lang) {
-            var cvEs = document.getElementById('cv-spanish');
-            var cvEn = document.getElementById('cv-english');
-            var btnEs = document.getElementById('btn-es');
-            var btnEn = document.getElementById('btn-en');
+<script>
+function switchLanguage(lang) {
+    document.getElementById('cv-spanish').style.display = (lang === 'es') ? 'flex' : 'none';
+    document.getElementById('cv-english').style.display = (lang === 'en') ? 'flex' : 'none';
+}
 
-            if (lang === 'es') {
-                cvEs.style.display = 'flex';
-                cvEn.style.display = 'none';
-                btnEs.classList.add('active');
-                btnEn.classList.remove('active');
-            } else if (lang === 'en') {
-                cvEs.style.display = 'none';
-                cvEn.style.display = 'flex';
-                btnEn.classList.add('active');
-                btnEs.classList.remove('active');
-            }
+function descargarPDF() {
+    var cvEs = document.getElementById('cv-spanish');
+    var cvEn = document.getElementById('cv-english');
+
+    var elementToPrint = (cvEs.style.display !== 'none') ? cvEs : cvEn;
+    var idiomaNombre = (cvEs.style.display !== 'none') ? 'ES' : 'EN';
+
+    // CLONAR (clave para evitar errores de render)
+    var clone = elementToPrint.cloneNode(true);
+
+    var container = document.createElement("div");
+    container.appendChild(clone);
+    document.body.appendChild(container);
+
+    var opt = {
+        margin: 0,
+        filename: 'CV_Adrian_Cuesta_' + idiomaNombre + '.pdf',
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: {
+            scale: 3,
+            useCORS: true,
+            scrollY: 0
+        },
+        jsPDF: {
+            unit: 'mm',
+            format: 'a4',
+            orientation: 'portrait'
         }
+    };
 
-        // Función directa y limpia para descargar el PDF (sin lidiar con animaciones)
-        function descargarPDF() {
-            var cvEs = document.getElementById('cv-spanish');
-            var cvEn = document.getElementById('cv-english');
-            
-            var elementToPrint = (cvEs.style.display !== 'none') ? cvEs : cvEn;
-            var idiomaNombre = (cvEs.style.display !== 'none') ? 'ES' : 'EN';
+    html2pdf().set(opt).from(clone).save().then(() => {
+        document.body.removeChild(container);
+    });
+}
+</script>
 
-            // Opciones de alta calidad para el PDF
-            var opt = {
-                margin:       0,
-                filename:     'CV_Adrian_Cuesta_' + idiomaNombre + '.pdf',
-                image:        { type: 'jpeg', quality: 1 },
-                html2canvas:  { scale: 2, useCORS: true }, // Permite cargar la foto
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-
-            // Genera y descarga el PDF al instante
-            html2pdf().set(opt).from(elementToPrint).save();
-        }
-    </script>
 </body>
 </html>
