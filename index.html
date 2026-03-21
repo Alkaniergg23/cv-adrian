@@ -9,12 +9,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <style>
+        /* === RESETEO DE ESTILOS BÁSICOS === */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        /* Definimos variables para los colores principales */
         :root {
             --azul-noche: #1a2a4c;
             --azul-acento: #4da6ff;
@@ -34,10 +36,11 @@
             overflow-x: hidden; 
         }
         
+        /* === ESTILOS DE LOS BOTONES Y SWITCHER === */
         .language-switcher {
             text-align: center;
             margin-bottom: 30px;
-            animation: fadeIn 1s ease-out;
+            animation: fadeIn 1s ease-out; 
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
@@ -50,9 +53,9 @@
             border: 2px solid transparent;
             padding: 12px 24px;
             font-size: 1em;
-            border-radius: 50px;
+            border-radius: 50px; 
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease; 
             font-weight: 600;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
@@ -63,7 +66,7 @@
 
         .btn-lang:hover {
             background-color: #2c457d;
-            transform: translateY(-2px);
+            transform: translateY(-2px); 
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
@@ -79,17 +82,19 @@
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
         }
 
+        /* === CONTENEDOR DEL CV CON ANIMACIÓN DE ENTRADA === */
         .cv-container {
             display: flex;
             max-width: 900px;
             margin: 0 auto;
             background: var(--blanco);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
             border-radius: 12px;
             overflow: hidden;
-            animation: slideInUp 0.8s ease-out;
+            animation: slideInUp 0.8s ease-out; 
         }
         
+        /* === COLUMNA IZQUIERDA (AZUL NOCHE) === */
         .left-column {
             width: 35%;
             background-color: var(--azul-noche); 
@@ -109,11 +114,11 @@
             border: 5px solid var(--blanco);
             margin-bottom: 25px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
         }
 
         .profile-pic:hover {
-            transform: scale(1.05);
+            transform: scale(1.05); 
             box-shadow: 0 8px 20px rgba(0,0,0,0.5);
         }
 
@@ -130,19 +135,19 @@
         .contact-icon {
             margin-right: 12px;
             font-size: 1.2em;
-            color: var(--azul-acento);
+            color: var(--azul-acento); 
         }
 
         .left-title {
             width: 100%;
             font-size: 1.25em;
             text-transform: uppercase;
-            border-bottom: 2px solid var(--azul-acento);
+            border-bottom: 2px solid #5d6d7e; 
             padding-bottom: 8px;
             margin-bottom: 18px;
             margin-top: 15px;
             letter-spacing: 1.5px;
-            color: var(--blanco);
+            color: var(--blanco); 
             font-weight: 700;
         }
         .left-list {
@@ -158,7 +163,7 @@
             align-items: flex-start;
         }
         .left-list li::before {
-            content: "✦";
+            content: "✦"; 
             color: var(--azul-acento); 
             font-weight: bold;
             display: inline-block;
@@ -170,6 +175,7 @@
             transform: rotate(90deg) scale(1.2);
         }
 
+        /* === COLUMNA DERECHA (BLANCA) === */
         .right-column {
             width: 65%;
             padding: 50px 40px;
@@ -268,10 +274,12 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
         @keyframes slideInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
         @keyframes slideInLeft {
             from { opacity: 0; transform: translateX(-20px); }
             to { opacity: 1; transform: translateX(0); }
@@ -293,11 +301,13 @@
             .date { float: none; display: block; margin-top: 5px; margin-bottom: 10px; text-align: left; font-size: 0.85em; }
             .right-column ul { padding-left: 18px; }
         }
+
         @media (max-width: 480px) {
             h1 { font-size: 1.9em; }
             .left-title { font-size: 1.1em; }
             .right-column p, .right-column li, .left-list li { font-size: 0.95em; }
         }
+
     </style>
 </head>
 <body>
@@ -310,7 +320,7 @@
 
     <div id="cv-spanish" class="cv-container">
         <div class="left-column">
-            <img src="https://i.postimg.cc/vmsSS7W0/me-000.png" alt="Foto de Adrian Cuesta" class="profile-pic">
+            <img src="me_000.jpg" alt="Foto de Adrian Cuesta" class="profile-pic">
             
             <div class="contact-info">
                 <p><span class="contact-icon">📍</span> Av dos # 11 col buambilias<br>Hermosillo, Sonora<br>Mexico C.P 83140</p>
@@ -331,7 +341,7 @@
                 <li>Lectura y Cine</li>
                 <li>Videojuegos</li>
                 <li>Fórmula 1</li>
-                <li>Programación (proyectos personales)</li>
+                <li>Programación (proyectos personales para no perder la práctica)</li>
             </ul>
 
             <h2 class="left-title">Idiomas</h2>
@@ -423,10 +433,9 @@
         </div>      
     </div>
 
-
     <div id="cv-english" class="cv-container">
         <div class="left-column">
-            <img src="https://i.postimg.cc/vmsSS7W0/me-000.png" alt="Adrian Cuesta Profile Picture" class="profile-pic">
+            <img src="me_000.jpg" alt="Adrian Cuesta Profile Picture" class="profile-pic">
             
             <div class="contact-info">
                 <p><span class="contact-icon">📍</span> Av dos # 11 col buambilias<br>Hermosillo, Sonora<br>Mexico C.P 83140</p>
@@ -557,6 +566,7 @@
                 btnEn.classList.add('active');
                 btnEs.classList.remove('active');
             }
+            
             resetAnimations();
         }
 
@@ -569,31 +579,34 @@
             });
         }
 
-        // Función para descargar el PDF
         function descargarPDF() {
-            // Buscamos cuál de los dos currículums está visible
             var cvEs = document.getElementById('cv-spanish');
             var cvEn = document.getElementById('cv-english');
             
-            var elementToPrint = (cvEs.style.display !== 'none') ? cvEs : cvEn;
-            var idioma = (cvEs.style.display !== 'none') ? 'ES' : 'EN';
+            var elementToPrint;
+            var idiomaNombre;
 
-            // Configuración del PDF
+            if (cvEs.style.display !== 'none') {
+                elementToPrint = cvEs;
+                idiomaNombre = 'ES';
+            } else {
+                elementToPrint = cvEn;
+                idiomaNombre = 'EN';
+            }
+
             var opt = {
                 margin:       0,
-                filename:     'CV_Adrian_Cuesta_' + idioma + '.pdf',
+                filename:     'CV_Adrian_Cuesta_' + idiomaNombre + '.pdf',
                 image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, useCORS: true }, // useCORS permite que la foto de internet cargue en el PDF
+                html2canvas:  { scale: 2, useCORS: true }, 
                 jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
             };
 
-            // Quitamos las animaciones temporalmente para que el PDF no salga borroso
-            elementToPrint.style.animation = 'none';
+            const elementsToReset = document.querySelectorAll('h2, .animate-block');
+            elementsToReset.forEach(el => el.style.animation = 'none');
 
-            // Generamos y guardamos el PDF
             html2pdf().set(opt).from(elementToPrint).save().then(function() {
-                // Volvemos a activar las animaciones
-                elementToPrint.style.animation = '';
+                elementsToReset.forEach(el => el.style.animation = '');
             });
         }
     </script>
