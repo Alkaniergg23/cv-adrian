@@ -72,6 +72,16 @@ button:hover { opacity: 0.85; }
     padding: 40px;
 }
 
+/* FOTO (solo agregado) */
+.profile-pic {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
 /* TEXTOS */
 h1 {
     font-size: 28px;
@@ -129,6 +139,12 @@ p {
 <!-- CV ESPAÑOL -->
 <div id="cv-spanish" class="cv-container">
     <div class="left-column">
+
+        <!-- ✅ SOLO ESTO SE AGREGÓ -->
+        <img src="https://i.postimg.cc/vmsSS7W0/me-000.png"
+             crossorigin="anonymous"
+             class="profile-pic">
+
         <h2>Contacto</h2>
         <p>📞 6624733049</p>
         <p>✉️ adriancuesta58@gmail.com</p>
@@ -171,6 +187,12 @@ p {
 <!-- CV INGLES -->
 <div id="cv-english" class="cv-container" style="display:none;">
     <div class="left-column">
+
+        <!-- ✅ MISMO CAMBIO -->
+        <img src="https://i.postimg.cc/vmsSS7W0/me-000.png"
+             crossorigin="anonymous"
+             class="profile-pic">
+
         <h2>Contact</h2>
         <p>📞 6624733049</p>
         <p>✉️ adriancuesta58@gmail.com</p>
@@ -251,4 +273,3 @@ function descargarPDF() {
 </script>
 
 </body>
-</html>
