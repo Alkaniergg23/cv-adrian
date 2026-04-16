@@ -33,14 +33,18 @@ body {
     margin-bottom: 30px;
 }
 
-.btn-lang, .btn-download {
+button {
     background-color: var(--azul-noche);
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 50px;
+    padding: 12px 20px;
+    border-radius: 30px;
     cursor: pointer;
+    margin: 5px;
+    transition: 0.3s;
 }
+
+button:hover { opacity: 0.85; }
 
 .btn-download { background-color: var(--verde-boton); }
 
@@ -50,9 +54,12 @@ body {
     max-width: 900px;
     margin: auto;
     background: white;
-    page-break-inside: avoid;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
+/* COLUMNAS */
 .left-column {
     width: 35%;
     background: var(--azul-noche);
@@ -65,7 +72,34 @@ body {
     padding: 40px;
 }
 
-/* PRINT FIX */
+/* TEXTOS */
+h1 {
+    font-size: 28px;
+    color: var(--azul-noche);
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    padding-bottom: 5px;
+}
+
+.right-column h2 {
+    border-bottom: 2px solid var(--azul-acento);
+    color: var(--azul-noche);
+}
+
+p {
+    margin-bottom: 10px;
+    color: var(--gris-texto);
+    line-height: 1.5;
+}
+
+.left-column p { color: #ddd; }
+
+/* PRINT */
 @media print {
     body {
         background: white;
@@ -77,12 +111,10 @@ body {
     }
 
     .cv-container {
-        width: 100%;
-        max-width: 100%;
         box-shadow: none;
+        border-radius: 0;
     }
 }
-
 </style>
 </head>
 
@@ -100,11 +132,39 @@ body {
         <h2>Contacto</h2>
         <p>📞 6624733049</p>
         <p>✉️ adriancuesta58@gmail.com</p>
+
+        <h2>Habilidades</h2>
+        <p>Python</p>
+        <p>Java</p>
+        <p>C</p>
+        <p>SQL</p>
+        <p>Automatización</p>
+        <p>Inteligencia Artificial</p>
     </div>
 
     <div class="right-column">
         <h1>Adrian Cuesta Duran</h1>
-        <p>Desarrollador & Automatización</p>
+        <p><strong>Desarrollador & Automatización</strong></p>
+
+        <h2>Perfil</h2>
+        <p>
+        Estudiante de Ingeniería en Sistemas con experiencia en desarrollo de software y automatización de procesos.
+        Especializado en soluciones con inteligencia artificial para optimizar flujos de trabajo empresariales.
+        </p>
+
+        <h2>Experiencia</h2>
+        <p>
+        Trabajé en TE Connectivity durante un año, donde desarrollé un sistema basado en inteligencia artificial
+        para automatizar procesos de facturación. El sistema procesa correos electrónicos, extrae información clave
+        como números de parte de importación/exportación y apoya a los analistas en la captura de datos,
+        logrando automatizar hasta el 80% del trabajo administrativo.
+        </p>
+
+        <h2>Educación</h2>
+        <p>
+        Ingeniería en Sistemas<br>
+        Instituto Tecnológico de Hermosillo
+        </p>
     </div>
 </div>
 
@@ -114,11 +174,38 @@ body {
         <h2>Contact</h2>
         <p>📞 6624733049</p>
         <p>✉️ adriancuesta58@gmail.com</p>
+
+        <h2>Skills</h2>
+        <p>Python</p>
+        <p>Java</p>
+        <p>C</p>
+        <p>SQL</p>
+        <p>Automation</p>
+        <p>Artificial Intelligence</p>
     </div>
 
     <div class="right-column">
         <h1>Adrian Cuesta Duran</h1>
-        <p>Developer & Automation Specialist</p>
+        <p><strong>Developer & Automation Specialist</strong></p>
+
+        <h2>Profile</h2>
+        <p>
+        Systems Engineering student with experience in software development and process automation.
+        Specialized in AI-driven solutions to optimize business workflows.
+        </p>
+
+        <h2>Experience</h2>
+        <p>
+        Worked at TE Connectivity for one year, developing an AI-based system to automate invoicing workflows.
+        The system processes emails, extracts key data such as import/export part numbers, and assists analysts
+        in data capture and processing, handling up to 80% of administrative tasks.
+        </p>
+
+        <h2>Education</h2>
+        <p>
+        Systems Engineering<br>
+        Instituto Tecnológico de Hermosillo
+        </p>
     </div>
 </div>
 
@@ -135,7 +222,6 @@ function descargarPDF() {
     var elementToPrint = (cvEs.style.display !== 'none') ? cvEs : cvEn;
     var idiomaNombre = (cvEs.style.display !== 'none') ? 'ES' : 'EN';
 
-    // CLONAR (clave para evitar errores de render)
     var clone = elementToPrint.cloneNode(true);
 
     var container = document.createElement("div");
@@ -147,7 +233,7 @@ function descargarPDF() {
         filename: 'CV_Adrian_Cuesta_' + idiomaNombre + '.pdf',
         image: { type: 'jpeg', quality: 1 },
         html2canvas: {
-            scale: 3,
+            scale: 2,
             useCORS: true,
             scrollY: 0
         },
