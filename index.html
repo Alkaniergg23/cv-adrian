@@ -154,7 +154,7 @@ li { margin-bottom: 5px; }
 <div id="cv-spanish" class="cv-container">
 <div class="left-column">
 
-<img src="https://i.postimg.cc/vmsSS7W0/me-000.png" class="profile-pic" crossorigin="anonymous">
+<img src="foto.jpg" alt="Adrian Cuesta" class="profile-pic">
 
 <h2>Idiomas</h2>
 <p>Español (Nativo)</p>
@@ -226,7 +226,7 @@ Cursos en Full Stack, Python, e Inteligencia Artificial. Desarrollo activo de un
 <div id="cv-english" class="cv-container" style="display:none;">
 <div class="left-column">
 
-<img src="https://i.postimg.cc/vmsSS7W0/me-000.png" class="profile-pic" crossorigin="anonymous">
+<img src="foto.jpg" alt="Adrian Cuesta" class="profile-pic">
 
 <h2>Languages</h2>
 <p>Spanish (Native)</p>
@@ -302,16 +302,16 @@ function switchLanguage(lang) {
 }
 
 function descargarPDF() {
-    // Detectamos qué CV está visible en la pantalla
+    // Detectamos qué bloque está activo sin importar la clase original
     var cvEspanol = document.getElementById('cv-spanish');
-    var elementoImprimir = (cvEspanol.style.display === 'none') ? document.getElementById('cv-english') : cvEspanol;
+    var cvIngles = document.getElementById('cv-english');
+    var elementoImprimir = (cvEspanol.style.display !== 'none') ? cvEspanol : cvIngles;
 
-    // Configuramos html2pdf para forzar la carga de la imagen (CORS)
     var opciones = {
-        margin:       0,
+        margin:       10, // Un ligero margen para que no se corte al imprimir
         filename:     'CV_Adrian_Cuesta.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true, allowTaint: true }, // Esto repara el problema de la foto
+        html2canvas:  { scale: 2 }, // Al ser imagen local, ya no necesitamos forcejear con CORS
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
