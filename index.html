@@ -12,18 +12,19 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-    --azul-noche: #1a2a4c;
-    --azul-acento: #4da6ff;
-    --gris-fondo: #f0f2f5;
-    --gris-texto: #333;
+    --azul-noche: #0f172a; /* Tono más corporativo y profundo */
+    --azul-acento: #2563eb; /* Azul más vibrante para destacar */
+    --gris-fondo: #e2e8f0;
+    --gris-texto: #334155;
     --blanco: #ffffff;
-    --verde-boton: #27ae60;
+    --verde-boton: #16a34a;
 }
 
 body {
     font-family: 'Open Sans', Arial, sans-serif;
     background-color: var(--gris-fondo);
-    padding: 20px;
+    padding: 30px 20px;
+    line-height: 1.6;
 }
 
 /* BOTONES */
@@ -36,13 +37,20 @@ button {
     background-color: var(--azul-noche);
     color: white;
     border: none;
-    padding: 12px 20px;
+    padding: 12px 24px;
     border-radius: 30px;
     cursor: pointer;
     margin: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: var(--azul-acento);
 }
 
 .btn-download { background-color: var(--verde-boton); }
+.btn-download:hover { background-color: #15803d; }
 
 /* CONTENEDOR */
 .cv-container {
@@ -52,6 +60,7 @@ button {
     background: white;
     border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Agregada sombra para profundidad */
 }
 
 /* COLUMNAS */
@@ -59,7 +68,7 @@ button {
     width: 35%;
     background: var(--azul-noche);
     color: white;
-    padding: 30px;
+    padding: 40px 30px;
 }
 
 .right-column {
@@ -69,54 +78,67 @@ button {
 
 /* FOTO */
 .profile-pic {
-    width: 140px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 30px auto;
+    border: 3px solid rgba(255,255,255,0.1);
 }
 
 /* TEXTOS */
-h1 { font-size: 28px; color: var(--azul-noche); margin-bottom: 10px; }
+h1 { font-size: 32px; color: var(--azul-noche); margin-bottom: 5px; letter-spacing: -0.5px; }
 
 h2 {
     font-size: 18px;
     margin-bottom: 15px;
-    border-bottom: 2px solid rgba(255,255,255,0.2);
-    padding-bottom: 5px;
+    border-bottom: 2px solid rgba(255,255,255,0.15);
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 25px;
 }
+
+.left-column h2:first-of-type { margin-top: 0; }
 
 .right-column h2 {
     border-bottom: 2px solid var(--azul-acento);
     color: var(--azul-noche);
 }
 
-p { margin-bottom: 10px; color: var(--gris-texto); }
+p { margin-bottom: 10px; color: var(--gris-texto); font-size: 14.5px; }
 
-.left-column p { color: #ddd; }
+.left-column p { color: #cbd5e1; font-size: 14px; margin-bottom: 8px; }
+
+ul { margin-bottom: 15px; padding-left: 20px; color: var(--gris-texto); font-size: 14.5px; }
+li { margin-bottom: 5px; }
 
 /* TIMELINE */
 .timeline {
     border-left: 3px solid var(--azul-acento);
-    padding-left: 15px;
+    padding-left: 20px;
     margin-bottom: 20px;
+    margin-top: 15px;
 }
 
 .timeline-item {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     position: relative;
 }
+
+.timeline-item:last-child { margin-bottom: 0; }
 
 .timeline-item::before {
     content: "";
     position: absolute;
-    left: -11px;
+    left: -27px;
     top: 5px;
     width: 12px;
     height: 12px;
     background: var(--azul-acento);
     border-radius: 50%;
+    border: 2px solid white;
 }
 </style>
 </head>
@@ -124,70 +146,66 @@ p { margin-bottom: 10px; color: var(--gris-texto); }
 <body>
 
 <div class="language-switcher">
-    <button onclick="switchLanguage('es')">Spanish</button>
+    <button onclick="switchLanguage('es')">Español</button>
     <button onclick="switchLanguage('en')">English</button>
     <button class="btn-download" onclick="descargarPDF()">⬇ Descargar PDF</button>
 </div>
 
-<!-- ESPAÑOL -->
 <div id="cv-spanish" class="cv-container">
 <div class="left-column">
 
 <img src="https://i.postimg.cc/vmsSS7W0/me-000.png" class="profile-pic">
 
 <h2>Contacto</h2>
-<p>📞 6624733049</p>
+<p>📞 (662) 473-3049</p>
 <p>✉️ adriancuesta58@gmail.com</p>
+<p>📍 Hermosillo, Sonora</p>
 
-<h2>Habilidades</h2>
-<p>Python</p>
-<p>Java</p>
-<p>C</p>
-<p>SQL</p>
-<p>Automatización</p>
+<h2>Habilidades Core</h2>
+<p>Python & Java</p>
+<p>Desarrollo Web (HTML/CSS/JS)</p>
+<p>Bases de Datos (SQL)</p>
+<p>Automatización de Procesos</p>
+<p>Infraestructura & Redes (CCNA prep)</p>
 <p>Inteligencia Artificial</p>
 
 </div>
 
 <div class="right-column">
 <h1>Adrian Cuesta Duran</h1>
-<p><strong>Desarrollador & Automatización</strong></p>
+<p style="font-size: 18px; color: var(--azul-acento); font-weight: 600; margin-bottom: 20px;">Desarrollador de Software & Especialista en Automatización</p>
 
-<h2>Experiencia</h2>
-<p><strong>TE Connectivity</strong><br>Mayo 5, 2025 – Abril 30, 2026</p>
+<h2>Experiencia Profesional</h2>
+<p><strong>TE Connectivity</strong><br><span style="color: #64748b; font-size: 13px;">Mayo 2025 – Abril 2026</span></p>
 
-<p>
-Durante los primeros tres meses, adquirí experiencia en la elaboración de facturas dentro del área de Aduanas.
-Posteriormente desarrollé automatización con Excel y Power BI mejorando la eficiencia.
-</p>
+<p>Gestión operativa en el área de Aduanas, enfocada en la precisión de la facturación y documentación. Diseño e implementación de soluciones de automatización utilizando Excel y Power BI para optimizar el análisis de datos y reducir tiempos de procesamiento.</p>
 
-<p><strong>TE Custom Clients:</strong></p>
+<p><strong>Desarrollo de Soluciones (TE Custom Clients):</strong></p>
 <ul>
-<li>Lectura de PDFs</li>
-<li>Extracción automática de datos</li>
-<li>Integración con base de datos</li>
-<li>Procesamiento de correos</li>
+<li>Automatización en la lectura y extracción de datos de archivos PDF.</li>
+<li>Integración eficiente de información con bases de datos relacionales.</li>
+<li>Optimización de flujos de trabajo mediante el procesamiento automatizado de correos.</li>
 </ul>
 
-<h2>Educación</h2>
+<h2>Educación y Formación</h2>
 
 <div class="timeline">
 
 <div class="timeline-item">
-<p><strong>Preparatoria Colegio Muñoz Llano</strong><br>
-2018 – 2021<br>
-Aprendí lo básico de la programación.</p>
+<p><strong>Tecnológico Nacional de México Campus Hermosillo (ITH)</strong><br>
+<span style="color: #64748b; font-size: 13px;">2021 – 2027</span><br>
+Ingeniería en Sistemas Computacionales (En curso). Incluye Servicio Social con enfoque en desarrollo web y soporte administrativo.</p>
 </div>
 
 <div class="timeline-item">
-<p><strong>Tecnológico Nacional de México Campus Hermosillo</strong><br>
-2021 – 2027<br>
-Desarrollándome como un Ingeniero en Sistemas.</p>
+<p><strong>Colegio Muñoz Llano</strong><br>
+<span style="color: #64748b; font-size: 13px;">2018 – 2021</span><br>
+Bachillerato General con bases sólidas en lógica computacional.</p>
 </div>
 
 <div class="timeline-item">
-<p><strong>Udemy</strong><br>
-Cursos: Full Stack, Python, Inteligencia Artificial</p>
+<p><strong>Desarrollo Autónomo y Certificaciones</strong><br>
+Cursos en Full Stack, Python, e Inteligencia Artificial. Desarrollo activo de un sistema arquitectónico de inventario y protección financiera impulsado por IA y Smart Contracts.</p>
 </div>
 
 </div>
@@ -195,41 +213,61 @@ Cursos: Full Stack, Python, Inteligencia Artificial</p>
 </div>
 </div>
 
-<!-- INGLES -->
 <div id="cv-english" class="cv-container" style="display:none;">
 <div class="left-column">
 
 <img src="https://i.postimg.cc/vmsSS7W0/me-000.png" class="profile-pic">
 
 <h2>Contact</h2>
-<p>📞 6624733049</p>
+<p>📞 (662) 473-3049</p>
 <p>✉️ adriancuesta58@gmail.com</p>
+<p>📍 Hermosillo, Sonora</p>
+
+<h2>Core Skills</h2>
+<p>Python & Java</p>
+<p>Web Development (HTML/CSS/JS)</p>
+<p>Databases (SQL)</p>
+<p>Process Automation</p>
+<p>Networking (CCNA prep)</p>
+<p>Artificial Intelligence</p>
 
 </div>
 
 <div class="right-column">
 <h1>Adrian Cuesta Duran</h1>
-<p><strong>Developer & Automation Specialist</strong></p>
+<p style="font-size: 18px; color: var(--azul-acento); font-weight: 600; margin-bottom: 20px;">Software Developer & Automation Specialist</p>
 
-<h2>Education</h2>
+<h2>Professional Experience</h2>
+<p><strong>TE Connectivity</strong><br><span style="color: #64748b; font-size: 13px;">May 2025 – April 2026</span></p>
+
+<p>Operational management within the Customs department, focusing on billing and documentation accuracy. Designed and implemented automation solutions using Excel and Power BI to optimize data analysis and reduce processing times.</p>
+
+<p><strong>Solution Development (TE Custom Clients):</strong></p>
+<ul>
+<li>Automated reading and data extraction from PDF files.</li>
+<li>Seamless data integration with relational databases.</li>
+<li>Workflow optimization through automated email processing.</li>
+</ul>
+
+<h2>Education & Training</h2>
 
 <div class="timeline">
 
 <div class="timeline-item">
+<p><strong>TecNM Hermosillo (ITH)</strong><br>
+<span style="color: #64748b; font-size: 13px;">2021 – 2027</span><br>
+Systems Engineering (In progress). Includes Social Service focused on web development and administrative support.</p>
+</div>
+
+<div class="timeline-item">
 <p><strong>Colegio Muñoz Llano</strong><br>
-2018 – 2021<br>
-Learned programming basics.</p>
+<span style="color: #64748b; font-size: 13px;">2018 – 2021</span><br>
+High School Diploma with foundational studies in computational logic.</p>
 </div>
 
 <div class="timeline-item">
-<p><strong>TecNM Hermosillo</strong><br>
-2021 – 2027<br>
-Developing as a Systems Engineer.</p>
-</div>
-
-<div class="timeline-item">
-<p><strong>Udemy</strong><br>
-Courses: Full Stack, Python, AI</p>
+<p><strong>Independent Development & Certifications</strong><br>
+Courses in Full Stack, Python, and AI. Actively developing an AI-driven inventory and financial protection system utilizing Smart Contracts.</p>
 </div>
 
 </div>
