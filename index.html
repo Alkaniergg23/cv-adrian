@@ -154,7 +154,7 @@ li { margin-bottom: 5px; }
 <div id="cv-spanish" class="cv-container">
 <div class="left-column">
 
-<img src="https://i.postimg.cc/vmsSS7W0/me-000.png" class="profile-pic">
+<img src="https://i.postimg.cc/vmsSS7W0/me-000.png" class="profile-pic" crossorigin="anonymous">
 
 <h2>Idiomas</h2>
 <p>Español (Nativo)</p>
@@ -226,7 +226,7 @@ Cursos en Full Stack, Python, e Inteligencia Artificial. Desarrollo activo de un
 <div id="cv-english" class="cv-container" style="display:none;">
 <div class="left-column">
 
-<img src="https://i.postimg.cc/vmsSS7W0/me-000.png" class="profile-pic">
+<img src="https://i.postimg.cc/vmsSS7W0/me-000.png" class="profile-pic" crossorigin="anonymous">
 
 <h2>Languages</h2>
 <p>Spanish (Native)</p>
@@ -297,13 +297,25 @@ Courses in Full Stack, Python, and AI. Actively developing an AI-driven inventor
 
 <script>
 function switchLanguage(lang) {
-document.getElementById('cv-spanish').style.display = (lang === 'es') ? 'flex' : 'none';
-document.getElementById('cv-english').style.display = (lang === 'en') ? 'flex' : 'none';
+    document.getElementById('cv-spanish').style.display = (lang === 'es') ? 'flex' : 'none';
+    document.getElementById('cv-english').style.display = (lang === 'en') ? 'flex' : 'none';
 }
 
 function descargarPDF() {
-var element = document.querySelector('.cv-container');
-html2pdf().from(element).save();
+    // Detectamos qué CV está visible en la pantalla
+    var cvEspanol = document.getElementById('cv-spanish');
+    var elementoImprimir = (cvEspanol.style.display === 'none') ? document.getElementById('cv-english') : cvEspanol;
+
+    // Configuramos html2pdf para forzar la carga de la imagen (CORS)
+    var opciones = {
+        margin:       0,
+        filename:     'CV_Adrian_Cuesta.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true, allowTaint: true }, // Esto repara el problema de la foto
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opciones).from(elementoImprimir).save();
 }
 </script>
 
