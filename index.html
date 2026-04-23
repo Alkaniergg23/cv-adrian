@@ -23,13 +23,16 @@
 body {
     font-family: 'Open Sans', Arial, sans-serif;
     background-color: var(--gris-fondo);
-    padding: 30px 20px;
+    padding: 20px 10px; /* Reducido un poco para móviles */
     line-height: 1.6;
 }
 
 /* BOTONES */
 .language-switcher {
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones bajen de línea si no caben */
+    justify-content: center;
+    gap: 10px;
     margin-bottom: 30px;
 }
 
@@ -40,9 +43,10 @@ button {
     padding: 12px 24px;
     border-radius: 30px;
     cursor: pointer;
-    margin: 5px;
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.1s ease;
+    flex: 1 1 auto; /* Ajusta el tamaño de los botones dinámicamente */
+    max-width: 200px;
 }
 
 button:hover {
@@ -139,6 +143,29 @@ li { margin-bottom: 5px; }
     background: var(--azul-acento);
     border-radius: 50%;
     border: 2px solid white;
+}
+
+/* =========================================
+   DISEÑO RESPONSIVO (PARA MÓVILES)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    .cv-container {
+        flex-direction: column; /* Apila las columnas verticalmente */
+    }
+    
+    .left-column, .right-column {
+        width: 100%; /* Las columnas ahora toman todo el ancho */
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 26px; /* Letra un poco más pequeña en móvil */
+        text-align: center;
+    }
+
+    .right-column > p:first-of-type {
+        text-align: center;
+    }
 }
 </style>
 </head>
@@ -308,10 +335,10 @@ function descargarPDF() {
     var elementoImprimir = (cvEspanol.style.display !== 'none') ? cvEspanol : cvIngles;
 
     var opciones = {
-        margin:       10, // Un ligero margen para que no se corte al imprimir
+        margin:       10, 
         filename:     'CV_Adrian_Cuesta.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 }, // Al ser imagen local, ya no necesitamos forcejear con CORS
+        html2canvas:  { scale: 2 }, 
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
