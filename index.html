@@ -23,14 +23,14 @@
 body {
     font-family: 'Open Sans', Arial, sans-serif;
     background-color: var(--gris-fondo);
-    padding: 20px 10px; /* Reducido un poco para móviles */
+    padding: 20px 10px;
     line-height: 1.6;
 }
 
 /* BOTONES */
 .language-switcher {
     display: flex;
-    flex-wrap: wrap; /* Permite que los botones bajen de línea si no caben */
+    flex-wrap: wrap; 
     justify-content: center;
     gap: 10px;
     margin-bottom: 30px;
@@ -45,7 +45,7 @@ button {
     cursor: pointer;
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.1s ease;
-    flex: 1 1 auto; /* Ajusta el tamaño de los botones dinámicamente */
+    flex: 1 1 auto;
     max-width: 200px;
 }
 
@@ -146,25 +146,30 @@ li { margin-bottom: 5px; }
 }
 
 /* =========================================
-   DISEÑO RESPONSIVO (PARA MÓVILES)
+   DISEÑO RESPONSIVO FORZADO (MÓVILES)
    ========================================= */
 @media screen and (max-width: 768px) {
     .cv-container {
-        flex-direction: column; /* Apila las columnas verticalmente */
+        flex-direction: column !important; /* El !important fuerza la orden */
     }
     
     .left-column, .right-column {
-        width: 100%; /* Las columnas ahora toman todo el ancho */
-        padding: 30px 20px;
+        width: 100% !important; 
+        padding: 30px 20px !important;
     }
 
     h1 {
-        font-size: 26px; /* Letra un poco más pequeña en móvil */
-        text-align: center;
+        font-size: 26px !important; 
+        text-align: center !important;
     }
 
     .right-column > p:first-of-type {
-        text-align: center;
+        text-align: center !important;
+    }
+    
+    .profile-pic {
+        width: 120px !important;
+        height: 120px !important;
     }
 }
 </style>
@@ -329,7 +334,6 @@ function switchLanguage(lang) {
 }
 
 function descargarPDF() {
-    // Detectamos qué bloque está activo sin importar la clase original
     var cvEspanol = document.getElementById('cv-spanish');
     var cvIngles = document.getElementById('cv-english');
     var elementoImprimir = (cvEspanol.style.display !== 'none') ? cvEspanol : cvIngles;
@@ -338,7 +342,10 @@ function descargarPDF() {
         margin:       10, 
         filename:     'CV_Adrian_Cuesta.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 }, 
+        html2canvas:  { 
+            scale: 2, 
+            windowWidth: 1024 // TRUCO MAESTRO: Obliga al PDF a renderizarse como escritorio siempre
+        }, 
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
