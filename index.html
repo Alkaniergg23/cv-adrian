@@ -16,7 +16,6 @@
     --azul-acento: #4da6ff;
     --gris-fondo: #f0f2f5;
     --gris-texto: #333;
-    --gris-suave: #7f8c8d;
     --blanco: #ffffff;
     --verde-boton: #27ae60;
 }
@@ -25,14 +24,9 @@ body {
     font-family: 'Open Sans', Arial, sans-serif;
     background-color: var(--gris-fondo);
     padding: 20px;
-    animation: fadeIn 0.8s ease-in;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
+/* BOTONES */
 .language-switcher {
     text-align: center;
     margin-bottom: 30px;
@@ -46,13 +40,11 @@ button {
     border-radius: 30px;
     cursor: pointer;
     margin: 5px;
-    transition: all 0.3s ease;
 }
-
-button:hover { transform: translateY(-2px); }
 
 .btn-download { background-color: var(--verde-boton); }
 
+/* CONTENEDOR */
 .cv-container {
     display: flex;
     max-width: 900px;
@@ -60,9 +52,9 @@ button:hover { transform: translateY(-2px); }
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
+/* COLUMNAS */
 .left-column {
     width: 35%;
     background: var(--azul-noche);
@@ -75,6 +67,7 @@ button:hover { transform: translateY(-2px); }
     padding: 40px;
 }
 
+/* FOTO */
 .profile-pic {
     width: 140px;
     height: 140px;
@@ -82,11 +75,9 @@ button:hover { transform: translateY(-2px); }
     object-fit: cover;
     display: block;
     margin: 0 auto 20px auto;
-    transition: 0.3s;
 }
 
-.profile-pic:hover { transform: scale(1.05); }
-
+/* TEXTOS */
 h1 { font-size: 28px; color: var(--azul-noche); margin-bottom: 10px; }
 
 h2 {
@@ -101,13 +92,31 @@ h2 {
     color: var(--azul-noche);
 }
 
-p { margin-bottom: 10px; color: var(--gris-texto); line-height: 1.5; }
+p { margin-bottom: 10px; color: var(--gris-texto); }
+
 .left-column p { color: #ddd; }
 
-@media print {
-    body { background: white; padding: 0; }
-    .language-switcher { display: none; }
-    .cv-container { box-shadow: none; border-radius: 0; }
+/* TIMELINE */
+.timeline {
+    border-left: 3px solid var(--azul-acento);
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+.timeline-item {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -11px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: var(--azul-acento);
+    border-radius: 50%;
 }
 </style>
 </head>
@@ -120,11 +129,11 @@ p { margin-bottom: 10px; color: var(--gris-texto); line-height: 1.5; }
     <button class="btn-download" onclick="descargarPDF()">⬇ Descargar PDF</button>
 </div>
 
-<!-- CV ESPAÑOL -->
+<!-- ESPAÑOL -->
 <div id="cv-spanish" class="cv-container">
 <div class="left-column">
 
-<img src="https://i.postimg.cc/vmsSS7W0/me-000.png" crossorigin="anonymous" class="profile-pic">
+<img src="https://i.postimg.cc/vmsSS7W0/me-000.png" class="profile-pic">
 
 <h2>Contacto</h2>
 <p>📞 6624733049</p>
@@ -138,77 +147,63 @@ p { margin-bottom: 10px; color: var(--gris-texto); line-height: 1.5; }
 <p>Automatización</p>
 <p>Inteligencia Artificial</p>
 
-<h2>Datos</h2>
-<p>Fecha de nacimiento: 29 Septiembre 2003</p>
-
 </div>
 
 <div class="right-column">
 <h1>Adrian Cuesta Duran</h1>
 <p><strong>Desarrollador & Automatización</strong></p>
 
-<h2>Perfil</h2>
-<p>
-Estudiante de Ingeniería en Sistemas con experiencia en desarrollo de software y automatización de procesos.
-Especializado en soluciones con inteligencia artificial para optimizar flujos de trabajo empresariales.
-</p>
-
 <h2>Experiencia</h2>
+<p><strong>TE Connectivity</strong><br>Mayo 5, 2025 – Abril 30, 2026</p>
+
 <p>
-TE Connectivity (05 Mayo 2025 – 30 Abril 2026)
-
-Durante los primeros tres meses aprendí procesos de facturación en Aduanas, Exportación e Importación.
-
-Posteriormente desarrollé automatizaciones en Excel y Power BI que mejoraron la eficiencia del analista.
-
-En noviembre inicié un proyecto más grande con macros programables, detectando la necesidad de modernizar sistemas.
-
-Desarrollé "TE Custom Clients", un sistema con IA capaz de leer PDFs, procesar correos y enviar datos a base de datos,
-optimizando gran parte del trabajo operativo.
-
-El sistema fue bien recibido y resolvió múltiples problemas de automatización.
+Durante los primeros tres meses, adquirí experiencia en la elaboración de facturas dentro del área de Aduanas.
+Posteriormente desarrollé automatización con Excel y Power BI mejorando la eficiencia.
 </p>
+
+<p><strong>TE Custom Clients:</strong></p>
+<ul>
+<li>Lectura de PDFs</li>
+<li>Extracción automática de datos</li>
+<li>Integración con base de datos</li>
+<li>Procesamiento de correos</li>
+</ul>
 
 <h2>Educación</h2>
-<p>
-Tecnológico Nacional de México Campus Hermosillo (TecNM)<br>
-Agosto 2023 – Mayo 2027<br>
-Me estoy formando como Ingeniero en Sistemas y desarrollando aún más mi potencial como programador.
-</p>
 
-<p>
-Colegio Muñoz (Preparatoria)<br>
-Aprendí los fundamentos de programación.
-</p>
+<div class="timeline">
 
-<p>
-Udemy<br>
-Cursos: Full Stack, Python e Inteligencia Artificial.
-</p>
+<div class="timeline-item">
+<p><strong>Preparatoria Colegio Muñoz Llano</strong><br>
+2018 – 2021<br>
+Aprendí lo básico de la programación.</p>
+</div>
+
+<div class="timeline-item">
+<p><strong>Tecnológico Nacional de México Campus Hermosillo</strong><br>
+2021 – 2027<br>
+Desarrollándome como un Ingeniero en Sistemas.</p>
+</div>
+
+<div class="timeline-item">
+<p><strong>Udemy</strong><br>
+Cursos: Full Stack, Python, Inteligencia Artificial</p>
+</div>
+
+</div>
 
 </div>
 </div>
 
-<!-- CV INGLES -->
+<!-- INGLES -->
 <div id="cv-english" class="cv-container" style="display:none;">
 <div class="left-column">
 
-<img src="https://i.postimg.cc/vmsSS7W0/me-000.png" crossorigin="anonymous" class="profile-pic">
+<img src="https://i.postimg.cc/vmsSS7W0/me-000.png" class="profile-pic">
 
 <h2>Contact</h2>
 <p>📞 6624733049</p>
 <p>✉️ adriancuesta58@gmail.com</p>
-
-<h2>Skills</h2>
-<p>Python</p>
-<p>Java</p>
-<p>C</p>
-<p>SQL</p>
-<p>Automation</p>
-<p>Artificial Intelligence</p>
-
-<h2>Info</h2>
-<p>Date of Birth: September 29, 2003</p>
 
 </div>
 
@@ -216,42 +211,28 @@ Cursos: Full Stack, Python e Inteligencia Artificial.
 <h1>Adrian Cuesta Duran</h1>
 <p><strong>Developer & Automation Specialist</strong></p>
 
-<h2>Profile</h2>
-<p>
-Systems Engineering student with experience in software development and automation.
-Focused on AI solutions to optimize workflows.
-</p>
-
-<h2>Experience</h2>
-<p>
-TE Connectivity (May 5, 2025 – April 30, 2026)
-
-Learned customs invoicing processes during first 3 months.
-
-Developed Excel and Power BI automation tools improving efficiency.
-
-Later created "TE Custom Clients", an AI system that reads PDFs, processes emails,
-and automates data extraction for analysts.
-
-System significantly improved productivity and workflow.
-</p>
-
 <h2>Education</h2>
-<p>
-Tecnológico Nacional de México (TecNM)<br>
-Aug 2023 – May 2027<br>
-Developing my skills as a Systems Engineer.
-</p>
 
-<p>
-Colegio Muñoz (High School)<br>
-Learned programming fundamentals.
-</p>
+<div class="timeline">
 
-<p>
-Udemy<br>
-Courses: Full Stack, Python, Artificial Intelligence.
-</p>
+<div class="timeline-item">
+<p><strong>Colegio Muñoz Llano</strong><br>
+2018 – 2021<br>
+Learned programming basics.</p>
+</div>
+
+<div class="timeline-item">
+<p><strong>TecNM Hermosillo</strong><br>
+2021 – 2027<br>
+Developing as a Systems Engineer.</p>
+</div>
+
+<div class="timeline-item">
+<p><strong>Udemy</strong><br>
+Courses: Full Stack, Python, AI</p>
+</div>
+
+</div>
 
 </div>
 </div>
@@ -263,12 +244,8 @@ document.getElementById('cv-english').style.display = (lang === 'en') ? 'flex' :
 }
 
 function descargarPDF() {
-var cvEs = document.getElementById('cv-spanish');
-var cvEn = document.getElementById('cv-english');
-
-var elementToPrint = (cvEs.style.display !== 'none') ? cvEs : cvEn;
-
-html2pdf().from(elementToPrint).save();
+var element = document.querySelector('.cv-container');
+html2pdf().from(element).save();
 }
 </script>
 
