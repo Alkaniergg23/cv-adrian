@@ -71,11 +71,6 @@ button:hover {
     padding: 40px 30px;
 }
 
-.right-column {
-    width: 65%;
-    padding: 40px;
-}
-
 /* FOTO */
 .profile-pic {
     width: 150px;
@@ -85,6 +80,11 @@ button:hover {
     display: block;
     margin: 0 auto 30px auto;
     border: 3px solid rgba(255,255,255,0.1);
+}
+
+.right-column {
+    width: 65%;
+    padding: 40px;
 }
 
 /* TEXTOS */
@@ -154,7 +154,7 @@ li { margin-bottom: 5px; }
 <div id="cv-spanish" class="cv-container">
 <div class="left-column">
 
-<img src="[![adri.jpg](https://i.postimg.cc/Y0RqFr1K/adri.jpg)](https://postimg.cc/647XJNjY)" alt="Adrian Cuesta" class="profile-pic">
+<img src="https://i.postimg.cc/Y0RqFr1K/adri.jpg" alt="Adrian Cuesta" class="profile-pic">
 
 <h2>Idiomas</h2>
 <p>Español (Nativo)</p>
@@ -226,7 +226,7 @@ Cursos en Full Stack, Python, e Inteligencia Artificial. Desarrollo activo de un
 <div id="cv-english" class="cv-container" style="display:none;">
 <div class="left-column">
 
-<img src="foto.jpg" alt="Adrian Cuesta" class="profile-pic">
+<img src="https://i.postimg.cc/Y0RqFr1K/adri.jpg" alt="Adrian Cuesta" class="profile-pic">
 
 <h2>Languages</h2>
 <p>Spanish (Native)</p>
@@ -302,16 +302,15 @@ function switchLanguage(lang) {
 }
 
 function descargarPDF() {
-    // Detectamos qué bloque está activo sin importar la clase original
     var cvEspanol = document.getElementById('cv-spanish');
     var cvIngles = document.getElementById('cv-english');
     var elementoImprimir = (cvEspanol.style.display !== 'none') ? cvEspanol : cvIngles;
 
     var opciones = {
-        margin:       10, // Un ligero margen para que no se corte al imprimir
+        margin:       10, 
         filename:     'CV_Adrian_Cuesta.pdf',
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 }, // Al ser imagen local, ya no necesitamos forcejear con CORS
+        html2canvas:  { scale: 2, useCORS: true }, // Permite procesar la imagen externa en el PDF
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
